@@ -11,9 +11,9 @@ export interface ShowreelWallpaperButtonProps extends Pick<ShowreelWallpaperButt
  * @todo
  * - add forwardRef
  */
-function ShowreelWallPaperButton(props: ShowreelWallpaperButtonProps) {
+function ShowreelWallpaperButton(props: ShowreelWallpaperButtonProps) {
     const { src, alt } = props;
-    const styles = useMultiStyleConfig('ShowreelWallPaperButton');
+    const styles = useMultiStyleConfig('ShowreelWallpaperButton');
 
     return (
         <StylesProvider.Provider value={styles}>
@@ -27,4 +27,4 @@ function ShowreelWallPaperButton(props: ShowreelWallpaperButtonProps) {
     );
 }
 
-export default ShowreelWallPaperButton;
+export default ShowreelWallpaperButton;

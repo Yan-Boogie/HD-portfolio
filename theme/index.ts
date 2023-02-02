@@ -10,7 +10,7 @@ import colors from './foundations/colors'
 // Component style overrides
 import IconButtonStyle from './components/iconButton';
 import IconStyle from './components/icon';
-import ShowreelWallPaperButtonStyle from './components/showreelWallPaperButton';
+import ShowreelWallpaperButtonStyle from './components/showreelWallpaperButton';
 import TextStyle from './components/text';
 import VideoContainerStyle from './components/videoPlayer';
 import MenuIconButtonStyle from './components/menuItemButton';
@@ -23,7 +23,7 @@ const overrides = {
   components: {
     IconButton: IconButtonStyle,
     IconUI: IconStyle,
-    ShowreelWallPaperButton: ShowreelWallPaperButtonStyle,
+    ShowreelWallpaperButton: ShowreelWallpaperButtonStyle,
     Text: TextStyle,
     VideoContainer: VideoContainerStyle,
     MenuIconButton: MenuIconButtonStyle,

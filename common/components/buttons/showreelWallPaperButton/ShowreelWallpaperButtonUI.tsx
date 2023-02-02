@@ -15,7 +15,7 @@ export interface ShowreelWallpaperButtonUIProps {
 const ShowreelWallpaperButtonUI = forwardRef<ShowreelWallpaperButtonUIProps, 'button'>((props, ref) => {
     const { src, alt, children } = props;
 
-    const styles = useProvidedMultipartStyles({ name: 'showReelWallPaperButton' });
+    const styles = useProvidedMultipartStyles({ name: 'showReelWallpaperButton' });
 
     return (
         <Box

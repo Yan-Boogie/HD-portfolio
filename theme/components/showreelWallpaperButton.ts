@@ -1,7 +1,7 @@
 import { createMultiStyleConfigHelpers } from '@chakra-ui/styled-system'
 
 const helpers = createMultiStyleConfigHelpers([
-    'showReelWallPaperButton',
+    'showReelWallpaperButton',
     'mask',
     'iconBlock',
     'text',
@@ -9,7 +9,7 @@ const helpers = createMultiStyleConfigHelpers([
 
 const ShowreelWallpaperButton = helpers.defineMultiStyleConfig({
     baseStyle: {
-        showReelWallPaperButton: {
+        showReelWallpaperButton: {
             position: 'relative',
             width: '100vw',
             backgroundColor: 'gray.900',
