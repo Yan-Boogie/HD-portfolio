@@ -4,7 +4,7 @@ import IconMotion, { IconMotionProps } from './IconMotion';
 import IconUI, { IconUIProps } from './IconUI';
 
 type IsIconUIProps = (el: any) => el is IconUIProps;
-const isIconUIProps: IsIconUIProps = (el) => (el.motionType === 'none');
+const isIconUIProps = ((el) => (el.motionType === 'none')) as IsIconUIProps;
 
 export type IconSwitchProps = { motionType: 'full' | 'none' | 'half' } & (IconMotionProps | IconUIProps);
 
