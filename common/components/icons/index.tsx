@@ -1,2 +1,2 @@
-export * from './svgs/carouselRight';
-export * from './svgs/geometryBG';
+export * from './svgs/CarouselRight';
+export * from './svgs/GeometryBG';
