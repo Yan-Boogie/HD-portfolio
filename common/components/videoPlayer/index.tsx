@@ -75,6 +75,7 @@ const VideoPlayer = forwardRef<VideoPlayerProps, 'video'>((props, ref) => {
 
     return (
         <chakra.div
+            ref={previewMaskRef}
             pos="relative"
             overflow="hidden"
             w="380px"
@@ -91,7 +92,6 @@ const VideoPlayer = forwardRef<VideoPlayerProps, 'video'>((props, ref) => {
                 {...rest}>
                 {thumbnail ? (
                     <chakra.div
-                        ref={previewMaskRef}
                         zIndex="base"
                         pos="absolute"
                         w="full"

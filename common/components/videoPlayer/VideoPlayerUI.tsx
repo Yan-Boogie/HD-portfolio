@@ -19,7 +19,7 @@ const StyledSpinner = () => (
 );
 
 const VideoPlayerUI = forwardRef<VideoPlayerUIProps, 'video'>((props, _) => {
-    const { playerRef, playing, containerVariant, onReady, children, ...rest } = props;
+    const { playerRef, containerVariant, onReady, children, ...rest } = props;
 
     const containerStyles = useStyleConfig('VideoContainer', { variant: containerVariant });
     const [ready, setReady] = useState(false);
@@ -35,7 +35,6 @@ const VideoPlayerUI = forwardRef<VideoPlayerUIProps, 'video'>((props, _) => {
             __css={containerStyles}>
             {children}
             <ReactPlayer
-                playing={playing}
                 width="100%"
                 height="100%"
                 ref={playerRef}
