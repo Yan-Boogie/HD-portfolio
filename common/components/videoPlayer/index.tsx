@@ -18,14 +18,17 @@ const VideoPlayer = forwardRef<VideoPlayerProps, 'video'>((props, ref) => {
     const { thumbnail = false, children, ...rest } = props;
 
     const [playing, setPlaying] = useState(false);
+    const [ready, setReady] = useState(false);
     
     const playerRef = useRef<ReactPlayer>(null);
     const previewMaskRef = useRef<HTMLDivElement>(null);
 
     useImperativeHandle(ref, () => playerRef.current);
 
+    const onReady = () => setReady(true);
+
     useEffect(() => {
-        if (!thumbnail || !previewMaskRef.current) return () => {};
+        if (!thumbnail || !previewMaskRef.current || !ready) return () => {};
 
         const maskNode = previewMaskRef.current;
 
@@ -41,7 +44,7 @@ const VideoPlayer = forwardRef<VideoPlayerProps, 'video'>((props, ref) => {
     });
 
     useEffect(() => {
-        if (!thumbnail || !previewMaskRef.current) return () => {};
+        if (!thumbnail || !previewMaskRef.current || !ready) return () => {};
 
         const maskNode = previewMaskRef.current;
 
@@ -63,7 +66,7 @@ const VideoPlayer = forwardRef<VideoPlayerProps, 'video'>((props, ref) => {
     });
 
     const onProgressHandler = ({ playedSeconds }: any) => {
-        if (!thumbnail || !playerRef.current) return;
+        if (!thumbnail || !playerRef.current || !ready) return;
 
         const playerNode = playerRef.current;
 
@@ -84,6 +87,7 @@ const VideoPlayer = forwardRef<VideoPlayerProps, 'video'>((props, ref) => {
                 progressInterval={5000}
                 onProgress={onProgressHandler}
                 containerVariant="thumbnail"
+                onReady={onReady}
                 {...rest}>
                 {thumbnail ? (
                     <chakra.div

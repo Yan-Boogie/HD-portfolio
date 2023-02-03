@@ -4,6 +4,7 @@ const CONTROL_PANEL_SIZE = '190px';
 
 const VideoContainerStyle = defineStyleConfig({
     baseStyle: {
+        cursor: 'pointer',
         position: 'relative',
         overflow: 'hidden',
         width: { sm: '380px', md: '1280px' },
