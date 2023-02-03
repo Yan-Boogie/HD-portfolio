@@ -1,4 +1,5 @@
 import { ComponentMeta } from '@storybook/react';
+import { chakra } from '@chakra-ui/react';
 
 import VideoPlayer from './';
 
@@ -10,5 +11,8 @@ export default {
 const link = 'https://vimeo.com/714795278';
 
 export const Thumbnail = () => (
-    <VideoPlayer thumbnail url={link} />
+    // We need a wrapper for video now
+    <chakra.div w="380px" h="220px">
+        <VideoPlayer thumbnail url={link} />
+    </chakra.div>
 );
