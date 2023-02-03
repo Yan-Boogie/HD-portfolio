@@ -9,6 +9,7 @@ const VideoContainerStyle = defineStyleConfig({
         overflow: 'hidden',
         width: { sm: '380px', md: '1280px' },
         height: { sm: '220px', md: '720px' },
+        margin: 'auto auto',
     },
     variants: {
         thumbnail: {
