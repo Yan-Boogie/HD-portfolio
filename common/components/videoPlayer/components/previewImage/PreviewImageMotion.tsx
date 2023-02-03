@@ -7,7 +7,6 @@ import type { VideoMotionVariantTypes } from '../../types';
 
 type PreviewImageMotionVariants = {
     [_key in VideoMotionVariantTypes]: Variant;
-
 };
 
 const previewImageVariants: PreviewImageMotionVariants = {
