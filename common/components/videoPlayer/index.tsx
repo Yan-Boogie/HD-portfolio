@@ -7,14 +7,17 @@ import type { VideoPlayerUIProps } from './VideoPlayerUI';
 const VideoPlayerUI = dynamic(() => import('./VideoPlayerUI'), {ssr: false});
 
 import VideoContainer from './components/videoContainer/';
+import PreviewImage, { PreviewImageProps } from './components/previewImage';
 import useThumbnail from './hooks/useThumbnail';
 
 export interface VideoPlayerProps extends Omit<VideoPlayerUIProps, 'playerRef'> {
     thumbnail?: boolean;
+    previewSrc: PreviewImageProps['src'];
+    previewAlt: PreviewImageProps['alt'];
 };
 
 const VideoPlayer = forwardRef<VideoPlayerProps, 'video'>((props, ref) => {
-    const { thumbnail = false, children, ...rest } = props;
+    const { thumbnail = false, children, previewSrc, previewAlt, ...rest } = props;
 
     const [playing, setPlaying] = useState(false);
     const [ready, setReady] = useState(false);
@@ -36,6 +39,7 @@ const VideoPlayer = forwardRef<VideoPlayerProps, 'video'>((props, ref) => {
 
     return (
         <VideoContainer ref={containerRef}>
+            <PreviewImage src={previewSrc} alt={previewAlt} />
             <VideoPlayerUI
                 playing={playing}
                 playerRef={playerRef}

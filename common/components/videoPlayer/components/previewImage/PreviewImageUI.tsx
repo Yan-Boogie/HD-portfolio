@@ -1,20 +1,24 @@
 import { Image, ImageProps, forwardRef } from '@chakra-ui/react';
 
-export type PreviewImageUIProps = ImageProps;
+export interface PreviewImageUIProps {
+    src: ImageProps['src'];
+    alt: ImageProps['alt'];
+};
 
-const PreviewImageUI = forwardRef<ImageProps, 'img'>((props, ref) => {
-    const { alt, ...rest } = props;
+const PreviewImageUI = forwardRef<PreviewImageUIProps, 'img'>((props, ref) => {
+    const { alt, src } = props;
 
     return (
         <Image
             pos="absolute"
-            width="full"
+            height="full"
             margin="0 auto"
-            top="50%"
-            transform="translateY(-50%)"
+            left="50%"
+            transform="translateX(-50%)"
+            zIndex="docked"
             alt={alt}
             ref={ref}
-            {...rest} />
+            src={src} />
     )
 });
 

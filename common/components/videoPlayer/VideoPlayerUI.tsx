@@ -35,6 +35,7 @@ const VideoPlayerUI = forwardRef<VideoPlayerUIProps, 'video'>((props, _) => {
             __css={containerStyles}>
             {children}
             <ReactPlayer
+                light={false}
                 width="100%"
                 height="100%"
                 ref={playerRef}

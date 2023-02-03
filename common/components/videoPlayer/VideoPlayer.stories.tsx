@@ -11,8 +11,7 @@ export default {
 const link = 'https://vimeo.com/714795278';
 
 export const Thumbnail = () => (
-    // We need a wrapper for video now
     <chakra.div w="380px" h="220px">
-        <VideoPlayer thumbnail url={link} />
+        <VideoPlayer previewSrc="/mock/mock-1.jpg" previewAlt="Mock Image" thumbnail url={link} />
     </chakra.div>
 );
