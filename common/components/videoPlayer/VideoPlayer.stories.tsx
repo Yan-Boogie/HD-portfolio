@@ -15,3 +15,7 @@ export const Thumbnail = () => (
         <VideoPlayer previewSrc="/mock/mock-1.jpg" previewAlt="Mock Image" thumbnail url={link} />
     </chakra.div>
 );
+
+export const Base = () => (
+    <VideoPlayer previewSrc="/mock/mock-1.jpg" previewAlt="Mock Image" url={link} />
+);

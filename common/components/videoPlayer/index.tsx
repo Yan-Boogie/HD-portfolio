@@ -10,11 +10,13 @@ import VideoContainer from './components/videoContainer/';
 import PreviewImage, { PreviewImageProps } from './components/previewImage';
 import useThumbnail from './hooks/useThumbnail';
 
-export interface VideoPlayerProps extends Omit<VideoPlayerUIProps, 'playerRef'> {
-    thumbnail?: boolean;
+type ThumbnailSwitch = {
+    thumbnail: true;
     previewSrc: PreviewImageProps['src'];
     previewAlt: PreviewImageProps['alt'];
-};
+} | {};
+
+export type VideoPlayerProps = Omit<VideoPlayerUIProps, 'playerRef'> & ThumbnailSwitch;
 
 const VideoPlayer = forwardRef<VideoPlayerProps, 'video'>((props, ref) => {
     const { thumbnail = false, children, previewSrc, previewAlt, ...rest } = props;
@@ -39,7 +41,7 @@ const VideoPlayer = forwardRef<VideoPlayerProps, 'video'>((props, ref) => {
 
     return (
         <VideoContainer ref={containerRef}>
-            <PreviewImage src={previewSrc} alt={previewAlt} />
+            {thumbnail ? <PreviewImage src={previewSrc} alt={previewAlt} /> : null}
             <VideoPlayerUI
                 playing={playing}
                 playerRef={playerRef}
@@ -47,7 +49,7 @@ const VideoPlayer = forwardRef<VideoPlayerProps, 'video'>((props, ref) => {
                 controls={thumbnail ? false : true}
                 progressInterval={5000}
                 onProgress={onProgressHandler}
-                containerVariant="thumbnail"
+                containerVariant={thumbnail ? 'thumbnail' : ''}
                 onReady={onReady}
                 {...rest}>
                 <Mask>
