@@ -2,14 +2,19 @@ import { Center } from '@chakra-ui/react';
 
 import Page from '@/common/components/page';
 import VideoPlayer from '@/common/components/videoPlayer';
+import { IShowreel } from '../sanityServer/interfaces';
 
-const mockLink = 'https://vimeo.com/714795278';
+export interface ShowreelModuleProps {
+    showreel: IShowreel
+}
 
-export default function ShowreelModule() {
+export default function ShowreelModule(props: ShowreelModuleProps) {
+    const { showreel } = props;
+
     return (
         <Page>
             <Center>
-                <VideoPlayer previewSrc="/mock/mock-1.jpg" previewAlt="Mock Image" url={mockLink} />
+                <VideoPlayer previewSrc={showreel.previewSrc} previewAlt="Showreel" url={showreel.movieUrl} />
             </Center>
         </Page>
     );
