@@ -4,9 +4,9 @@ import IconMotion, { IconMotionProps } from './IconMotion';
 import IconUI, { IconUIProps } from './IconUI';
 
 type IsIconUIProps = (el: any) => el is IconUIProps;
-const isIconUIProps = ((el) => (el.motionType === 'none')) as IsIconUIProps;
+const isIconUIProps = ((el) => (el.motiontype === 'none')) as IsIconUIProps;
 
-export type IconSwitchProps = { motionType: 'full' | 'none' | 'half' } & (IconMotionProps | IconUIProps);
+export type IconSwitchProps = { motiontype: 'full' | 'none' | 'half' } & (IconMotionProps | IconUIProps);
 
 const IconSwitch = forwardRef<IconSwitchProps, 'svg'>((props, ref) => {
     if (isIconUIProps(props)) {
@@ -17,9 +17,9 @@ const IconSwitch = forwardRef<IconSwitchProps, 'svg'>((props, ref) => {
         );
     }
 
-    const { fontSize = ['4xl', '6xl'], motionType, pathBundle, ...rest } = props;
+    const { fontSize = ['4xl', '6xl'], motiontype, pathBundle, ...rest } = props;
 
-    if (motionType === 'half') return (
+    if (motiontype === 'half') return (
         <IconMotion
             fontSize={fontSize}
             pathBundle={[pathBundle[pathBundle.length - 1]]}

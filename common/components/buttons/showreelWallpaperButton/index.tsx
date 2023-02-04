@@ -20,7 +20,7 @@ function ShowreelWallpaperButton(props: ShowreelWallpaperButtonProps) {
             <ShowreelWallpaperButtonMotion src={src} alt={alt}>
                 <Text sx={styles.text} color="iconColors.primary" variant="h1">Watch Showreel</Text>
                 <chakra.div sx={styles.iconBlock}>
-                    <CarouselRight motionType="full" />
+                    <CarouselRight motiontype="full" />
                 </chakra.div>
             </ShowreelWallpaperButtonMotion>
         </StylesProvider.Provider>

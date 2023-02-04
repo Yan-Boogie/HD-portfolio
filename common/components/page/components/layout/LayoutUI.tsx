@@ -28,7 +28,7 @@ export const HeaderUI = forwardRef<{}, 'div'>((_, ref) => {
             </Link>
             <Link href="/menu">
                 <IconButton aria-label="menu">
-                    <CarouselRight motionType="full" />
+                    <CarouselRight motiontype="full" />
                 </IconButton>
             </Link>
         </chakra.div>

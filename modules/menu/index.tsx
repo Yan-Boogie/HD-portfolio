@@ -43,7 +43,7 @@ export default function MenuModule() {
         <Page withLayout={false}>
             <StyledCenter>
                 <StyledIconButton aria-label="close" onClick={() => router.back()}>
-                    <CarouselRight motionType="full" />
+                    <CarouselRight motiontype="full" />
                 </StyledIconButton>
                 {menuItems.map((item, idx) => (
                     <Link href={item.url} key={idx}>

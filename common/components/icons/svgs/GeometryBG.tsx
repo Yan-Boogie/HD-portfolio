@@ -23,7 +23,7 @@ export const GeometryBG = forwardRef<{}, 'div'>((props, ref) => {
     return (
         <IconSwitch
             ref={ref}
-            motionType="none"
+            motiontype="none"
             fontSize="300px"
             viewBox="0 0 1728.95 1537.69">
             <Path />

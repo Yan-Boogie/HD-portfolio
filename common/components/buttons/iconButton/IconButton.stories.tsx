@@ -10,6 +10,6 @@ export default {
 
 export const WithMotion = () => (
     <IconButton aria-label="example" onClick={() => console.log('clicked')}>
-        <CarouselRight motionType="full" />
+        <CarouselRight motiontype="full" />
     </IconButton>
 );

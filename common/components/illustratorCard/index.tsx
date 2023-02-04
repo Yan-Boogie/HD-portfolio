@@ -18,7 +18,7 @@ const IllustratorCard = forwardRef<IllustratorCardProps, 'div'>((props, ref) => 
                 <CardImage src={src} alt={alt} onClick={onClick} />
                 <Text as="h1" sx={styles.cardTitle}>Title</Text>
                 <IconButton pos="absolute" right={3} bottom="0" aria-label="example" onClick={onClick}>
-                    <CarouselRight motionType="full" />
+                    <CarouselRight motiontype="full" />
                 </IconButton>
             </Card>
         </StylesProvider.Provider>

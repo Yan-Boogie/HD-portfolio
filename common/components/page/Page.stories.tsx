@@ -41,7 +41,7 @@ export const PageWithTransition = () => {
     return (
         <chakra.div padding={2}>
             <IconButton aria-label="switch" onClick={() => setNum(prev => prev === 1 ? 0 : 1)}>
-                <CarouselRight motionType="full" />
+                <CarouselRight motiontype="full" />
             </IconButton>
             <Divider orientation="horizontal" />
             {Array.from(Array(2)).map((_, idx) => (
