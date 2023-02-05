@@ -44,6 +44,9 @@ const PageStyle = helpers.defineMultiStyleConfig({
             display: 'flex',
             flexDirection: 'column',
         },
+        body: {
+            flexGrow: 1,
+        },
         header: {
             position: 'sticky',
             top: 0,
@@ -52,11 +55,11 @@ const PageStyle = helpers.defineMultiStyleConfig({
             flexDirection: 'row',
             alignItems: 'center',
             justifyContent: 'space-between',
-            padding: 'var(--chakra-space-8) var(--chakra-space-20)',
+            padding: {
+                md: 'var(--chakra-space-8) var(--chakra-space-20)',
+                base: 'var(--chakra-space-4) var(--chakra-space-4)',
+            },
             backgroundColor: 'brand.primary',
-        },
-        body: {
-            flexGrow: 1,
         },
         footer: {
             position: 'relative',

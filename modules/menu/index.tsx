@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Center, CenterProps } from '@chakra-ui/react';
 
 import IconButton, { IconButtonProps } from '@/common/components/buttons/iconButton';
-import { CarouselRight } from '@/common/components/icons';
+import { Close } from '@/common/components/icons';
 import Page from '@/common/components/page';
 
 import MenuItemButton from '@/common/components/buttons/menuItemButton';
@@ -43,7 +43,7 @@ export default function MenuModule() {
         <Page withLayout={false}>
             <StyledCenter>
                 <StyledIconButton aria-label="close" onClick={() => router.back()}>
-                    <CarouselRight motiontype="full" />
+                    <Close motiontype="full" />
                 </StyledIconButton>
                 {menuItems.map((item, idx) => (
                     <Link href={item.url} key={idx}>

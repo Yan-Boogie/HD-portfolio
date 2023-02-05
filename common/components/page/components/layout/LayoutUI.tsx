@@ -3,7 +3,7 @@ import { chakra, forwardRef, Image } from '@chakra-ui/react';
 
 import useProvidedMultipartStyles from '@/common/hooks/useProvidedMultipartStyles';
 import IconButton from '@/common/components/buttons/iconButton';
-import { CarouselRight, GeometryBG } from '@/common/components/icons';
+import { Menu, GeometryBG } from '@/common/components/icons';
 
 export interface BodyUIProps {
     children: React.ReactNode;
@@ -28,7 +28,7 @@ export const HeaderUI = forwardRef<{}, 'div'>((_, ref) => {
             </Link>
             <Link href="/menu">
                 <IconButton aria-label="menu">
-                    <CarouselRight motiontype="full" />
+                    <Menu motiontype="full" />
                 </IconButton>
             </Link>
         </chakra.div>
