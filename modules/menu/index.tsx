@@ -13,9 +13,9 @@ const menuItems = [{
     label: 'Showreel',
 }, {
     url: '/motions',
-    label: 'Motions',
+    label: 'Motion',
 }, {
-    url: '/illustration',
+    url: '/illustrations',
     label: 'Illustration',
 }, {
     url: '/about',
