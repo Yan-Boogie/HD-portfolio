@@ -1,10 +1,9 @@
 import { forwardRef, chakra, Center } from '@chakra-ui/react';
 
 import VideoPlayer from '@/common/components/videoPlayer';
-import type { WindowItem } from '../../types';
+import type { WindowItem, Thumbnail } from '../../types';
 
 export interface ThumbnailButtonProps {
-    onClick: React.MouseEventHandler<HTMLButtonElement | HTMLDivElement>;
     windowItem: WindowItem;
 };
 
@@ -12,7 +11,7 @@ export const buttonWidthPixel = 380;
 export const buttonHeightPixel = 220;
 
 const StyledButton = (props: React.PropsWithChildren<{
-    onClick: ThumbnailButtonProps['onClick'];
+    onClick: React.MouseEventHandler<HTMLButtonElement | HTMLDivElement>;
     style: React.CSSProperties;
 }>) => {
     const { onClick, style, children } = props;
@@ -27,17 +26,11 @@ const StyledButton = (props: React.PropsWithChildren<{
 };
 
 const ThumbnailButton = forwardRef<ThumbnailButtonProps, 'button'>((props) => {
-    const { onClick, windowItem } = props;
+    const { windowItem: { index, style, data } } = props;
 
-    const { index, style, data } = windowItem;
+    if (!data[index]) return null;
 
-    const loading = data[index] === null;
-
-    if (loading) return null;
-
-    const { ...rest } = data[index];
-
-    console.log('rest-->\n', rest);
+    const { onClick, ...rest } = data[index] as Thumbnail;
 
     return (
         <StyledButton style={style} onClick={onClick}>
