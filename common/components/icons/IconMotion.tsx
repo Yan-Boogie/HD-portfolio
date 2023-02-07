@@ -66,12 +66,13 @@ type ActivePath = React.ReactElement;
 type MergedMotionProps = MergeWithMotion<IconUIProps>;
 export interface IconMotionProps extends Omit<MergedMotionProps, 'variant'> {
     pathBundle: [InactivePath, ActivePath] | [ActivePath];
+    noCircle?: boolean;
 };
 
 const MotionIcon: ReactFCWithRef<MergedMotionProps> = motion(IconUI);
 
 const IconMotion = forwardRef<IconMotionProps, 'div'>((props, ref) => {
-    const { pathBundle, ...rest } = props;
+    const { noCircle = false, pathBundle, ...rest } = props;
 
     if (pathBundle.length === 1) return (
         <MotionIcon variants={activeIconVariants} {...rest}>
@@ -87,25 +88,27 @@ const IconMotion = forwardRef<IconMotionProps, 'div'>((props, ref) => {
             <MotionIcon variants={activeIconVariants} variant="overlap" {...rest}>
                 {pathBundle[1]}
             </MotionIcon>
-            <Box
-                backgroundColor="transparent"
-                pos="absolute"
-                top="0"
-                left="0"
-                viewBox="0 0 200 200"
-                width="140%"
-                height="140%"
-                transform="translate(-18%, -18%)"
-                as={motion.svg}>
-                <motion.circle
-                    cx="100"
-                    cy="100"
-                    r="90"
-                    variants={circleVariants}
-                    fill="transparent"
-                    strokeWidth={2}
-                    stroke="var(--chakra-colors-iconColors-primary)" />
-            </Box>
+            {!noCircle && (
+                <Box
+                    backgroundColor="transparent"
+                    pos="absolute"
+                    top="0"
+                    left="0"
+                    viewBox="0 0 200 200"
+                    width="140%"
+                    height="140%"
+                    transform="translate(-18%, -18%)"
+                    as={motion.svg}>
+                    <motion.circle
+                        cx="100"
+                        cy="100"
+                        r="90"
+                        variants={circleVariants}
+                        fill="transparent"
+                        strokeWidth={2}
+                        stroke="var(--chakra-colors-iconColors-primary)" />
+                </Box>
+            )}
         </chakra.div>
         
     );

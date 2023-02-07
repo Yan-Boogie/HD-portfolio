@@ -6,7 +6,7 @@ import IconUI, { IconUIProps } from './IconUI';
 type IsIconUIProps = (el: any) => el is IconUIProps;
 const isIconUIProps = ((el) => (el.motiontype === 'none')) as IsIconUIProps;
 
-export type IconSwitchProps = { motiontype: 'full' | 'none' | 'half' } & (IconMotionProps | IconUIProps);
+export type IconSwitchProps = { motiontype: 'full' | 'none' | 'half' | 'noCircle' } & (IconMotionProps | IconUIProps);
 
 const IconSwitch = forwardRef<IconSwitchProps, 'svg'>((props, ref) => {
     if (isIconUIProps(props)) {
@@ -23,6 +23,14 @@ const IconSwitch = forwardRef<IconSwitchProps, 'svg'>((props, ref) => {
         <IconMotion
             fontSize={fontSize}
             pathBundle={[pathBundle[pathBundle.length - 1]]}
+            {...rest} />
+    )
+
+    if (motiontype === 'noCircle') return (
+        <IconMotion
+            noCircle
+            fontSize={fontSize}
+            pathBundle={pathBundle}
             {...rest} />
     )
 

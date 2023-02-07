@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { forwardRef } from '@chakra-ui/react'; 
 import IconButtonUI, { IconButtonUIProps } from './IconButtonUI';
 
-import type { MergeWithMotion, ReactFCWithRef } from 'common/utils/typings';
+import type { MergeWithMotion, ReactFCWithRef } from '@/common/utils/typings';
 
 type MotionVariantTypes = 'inactive' | 'active';
 const motionVariantTypes: {
