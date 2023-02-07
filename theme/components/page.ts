@@ -48,7 +48,8 @@ const PageStyle = helpers.defineMultiStyleConfig({
             flexGrow: 1,
         },
         header: {
-            position: 'sticky',
+            position: 'fixed',
+            zIndex: 'var(--chakra-zIndices-docked)',
             top: 0,
             width: 'full',
             display: 'flex',
@@ -91,7 +92,15 @@ const PageStyle = helpers.defineMultiStyleConfig({
             flexDirection: 'row',
             flexWrap: 'nowrap',
             zIndex: 'base',
-        }
+        },
+        title: {
+            position: 'absolute',
+            right: '20%',
+            top: '18%',
+            fontWeight: 'black',
+            fontSize: '9xl',
+            letterSpacing: 'wide',
+        },
     }
 });
 

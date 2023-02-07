@@ -9,3 +9,8 @@ export type HeaderMotionVariantTypes = 'transparent' | 'hidden';
 export type HeaderMotionVariants = {
     [_key in HeaderMotionVariantTypes]: Variant;
 };
+
+export type ScrollDownMotionVariantTypes = 'active' | 'hidden';
+export type ScrollDownMotionVariants = {
+    [_key in ScrollDownMotionVariantTypes]: Variant;
+};

@@ -15,10 +15,6 @@ interface StyledButton extends React.PropsWithChildren<{
 const StyledButton = forwardRef<StyledButton, 'button'>((props, ref) => {
     const { onClick, children } = props;
 
-    /**
-     * @Refactor
-     * set w & h in different screen size
-     */
     return (
         <chakra.div
             ref={ref}

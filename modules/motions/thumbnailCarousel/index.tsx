@@ -31,8 +31,6 @@ const ThumbnailCarousel = (props: ThumbnailCarouselProps) => {
 
     const [activated, setActivate] = useState<number>(0);
 
-    console.log('activated-->\n', activated);
-
     const renderIndicators = () => (
         <chakra.div  pos="absolute" top="2" left="50%" transform="translateX(-50%)" display="flex" flexWrap="nowrap">
             {slideItems.map((el, idx) => (

@@ -47,7 +47,7 @@ const mock: SlideItem[] = [{
 
 export default function MotionModule(props: MotionModuleProps) {
     return (
-        <Page>
+        <Page title="Motion">
             <ThumbnailCarousel slideItems={mock} />
             {/* <ThumbnailList /> */}
         </Page>

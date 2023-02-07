@@ -1,7 +1,9 @@
 import Link from 'next/link';
 import { chakra, forwardRef, Image } from '@chakra-ui/react';
+import { HiOutlineArrowNarrowDown } from 'react-icons/hi';
 
 import useProvidedMultipartStyles from '@/common/hooks/useProvidedMultipartStyles';
+import Text from '@/common/components/text';
 import IconButton from '@/common/components/buttons/iconButton';
 import { Menu, GeometryBG } from '@/common/components/icons';
 
@@ -79,6 +81,35 @@ export const LayoutUI = forwardRef<LayoutUIProps, 'div'>((props, ref) => {
     return (
         <chakra.div __css={styles} ref={ref}>
             {props.children}
+        </chakra.div>
+    );
+});
+
+export interface TitleUIProps {
+    title: string;
+}
+export const TitleUI = forwardRef<TitleUIProps, 'div'>((props, ref) => {
+    const { title } = props;
+    const styles = useProvidedMultipartStyles({ name: 'title' });
+
+    return (
+        <chakra.div pos="relative" w="full" h="100vh">
+            <Text as="h1" variant="h1" sx={styles} ref={ref}>
+                {title}
+            </Text>
+        </chakra.div>
+    );
+});
+
+export const ScrollDownUI = forwardRef<{}, 'div'>((_, ref) => {
+    return (
+        <chakra.div ref={ref} pos="fixed" bottom="5%" left="10%" display="flex" flexDirection="column">
+            <Text
+                margin="0 0 10px 10px"
+                color="fontColors.primary">
+                Scroll Down
+            </Text>
+            <HiOutlineArrowNarrowDown size={32} stroke="var(--chakra-colors-fontColors-primary)" />
         </chakra.div>
     );
 });

@@ -8,14 +8,15 @@ import Layout from './components/layout';
 
 export interface PageProps extends PageMotionProps {
     withLayout?: boolean;
+    title?: string;
 };
 
 const Page = forwardRef<PageProps, 'div'>((props, ref) => {
-    const { children, withLayout = true, ...rest } = props;
+    const { children, title, withLayout = true, ...rest } = props;
     const styles = useMultiStyleConfig('Page');
 
     const renderChildren = () => withLayout ? (
-        <Layout>
+        <Layout title={title}>
             {children}
         </Layout>
     ) : children;
