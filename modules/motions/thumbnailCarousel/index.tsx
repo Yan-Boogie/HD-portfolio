@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import { chakra } from '@chakra-ui/react';
+import { useState, useRef } from 'react';
+import { chakra, forwardRef } from '@chakra-ui/react';
+import { motion, useInView } from 'framer-motion';
 
 import IconButton from '@/common/components/buttons/iconButton';
 import { Diamond, CarouselLeft, CarouselRight } from '@/common/components/icons/';
@@ -12,11 +13,13 @@ export interface ThumbnailCarouselProps {
     slideItems: SlideItem[];
 };
 
-const Wrapper = ({ children }: { children: React.ReactNode[]}) => (
-    <chakra.div display="flex" w="full" pos="relative" backgroundColor="black">
+const Wrapper = forwardRef<{ children: React.ReactNode[]}, 'div'>(({ children }, ref) => (
+    <chakra.div ref={ref} margin="4rem 0" display="flex" w="full" pos="relative" backgroundColor="black">
         {children}
     </chakra.div>
-);
+));
+
+const MotionWrapper = motion(Wrapper);
 
 // eslint-disable-next-line no-unused-vars
 interface IndicatorProps { active: boolean; num: number, onClick: (_: number) => void; };
@@ -30,6 +33,11 @@ const ThumbnailCarousel = (props: ThumbnailCarouselProps) => {
     const { slideItems } = props;
 
     const [activated, setActivate] = useState<number>(0);
+
+    const wrapperRef = useRef(null);
+    const isWrapperInView = useInView(wrapperRef, { once: true });
+
+    console.log('isWrapperInView-->\n', isWrapperInView);
 
     const renderIndicators = () => (
         <chakra.div  pos="absolute" top="2" left="50%" transform="translateX(-50%)" display="flex" flexWrap="nowrap">
@@ -64,7 +72,11 @@ const ThumbnailCarousel = (props: ThumbnailCarouselProps) => {
     )
 
     return (
-        <Wrapper>
+        <MotionWrapper
+            ref={wrapperRef}
+            initial={{ opacity: 0 }}
+            animate={isWrapperInView ? { opacity: 1 } : { opacity: 0 }}
+        >
             {slideItems.map((el, idx) => (
                 <CarouselItem key={el.idx} slideItem={el} active={idx === activated} />
             ))}
@@ -72,7 +84,7 @@ const ThumbnailCarousel = (props: ThumbnailCarouselProps) => {
             {renderIndicators()}
             {renderPrev()}
             {renderNext()}
-        </Wrapper>
+        </MotionWrapper>
     );
 };
 

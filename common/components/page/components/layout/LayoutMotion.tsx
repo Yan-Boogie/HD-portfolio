@@ -40,8 +40,6 @@ const LayoutMotion = forwardRef<LayoutMotionProps, 'div'>((props, ref) => {
     const footerRef = useRef(null);
     const scrollDownRef = useRef(null);
 
-    console.log('scrollDownVariant-->\n', scrollDownVariant);
-
     const isFooterInView = useInView(footerRef);
 
     useEffect(() => {
