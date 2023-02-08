@@ -3,6 +3,7 @@ export type Thumbnail = {
     previewSrc: string;
     previewAlt: string;
     url: string;
+    text: string;
     onClick: React.MouseEventHandler<HTMLButtonElement | HTMLDivElement>;
 };
 

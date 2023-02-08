@@ -4,7 +4,7 @@ import InfiniteLoader from 'react-window-infinite-loader';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import { FixedSizeList as List } from 'react-window';
 
-import ThumbnailButton, { buttonHeightPixel } from './components/thumbnailButton';
+import ThumbnailButton, { CARD_HEIGHT_PIXEL } from './components/thumbnailCard';
 import ThumbnailRow from './components/thumbnailRow';
 import type { Thumbnail } from './types';
 
@@ -15,6 +15,7 @@ const mockData: Thumbnail = {
     url: 'https://vimeo.com/714795278',
     previewAlt: 'mock',
     previewSrc: '/mock/mock-1.jpg',
+    text: 'Work',
     onClick: () => console.log('clicked'),
 };
 
@@ -30,8 +31,6 @@ const DesktopList = (props: ThumbnailListProps) => {
     const isItemLoaded = (index: number) => index < data.length && data[index] !== null;
     
     const loadMoreItems = (startIndex: number, stopIndex: number) => {
-        console.log('load more!!\n')
-
         return new Promise<void>((resolve) => {
             setTimeout(() => {
                 const newData = [...data];
@@ -48,19 +47,19 @@ const DesktopList = (props: ThumbnailListProps) => {
     };
 
     return (
-        <AutoSizer>
-            {({ height, width }) => (
-                <InfiniteLoader
-                    isItemLoaded={isItemLoaded}
-                    itemCount={data.length}
-                    loadMoreItems={loadMoreItems}
-                >
-                    {({ onItemsRendered, ref }) => (
+        <InfiniteLoader
+            isItemLoaded={isItemLoaded}
+            itemCount={data.length}
+            loadMoreItems={loadMoreItems}
+        >
+            {({ onItemsRendered, ref }) => (
+                <AutoSizer>
+                    {({ height, width }) => (
                         <List
                             height={height}
                             width={width}
                             itemCount={data.length}
-                            itemSize={buttonHeightPixel}
+                            itemSize={CARD_HEIGHT_PIXEL}
                             itemData={data}
                             onItemsRendered={onItemsRendered}
                             ref={ref}>
@@ -69,9 +68,9 @@ const DesktopList = (props: ThumbnailListProps) => {
                             )}
                         </List>
                     )}
-                </InfiniteLoader>
+                </AutoSizer>
             )}
-        </AutoSizer>
+        </InfiniteLoader>
     );
 };
 
@@ -113,7 +112,7 @@ const MobileList = (props: ThumbnailListProps) => {
                             height={height}
                             width={width}
                             itemCount={data.length}
-                            itemSize={buttonHeightPixel + MOBILE_MARGIN}
+                            itemSize={CARD_HEIGHT_PIXEL + MOBILE_MARGIN}
                             itemData={data}
                             onItemsRendered={onItemsRendered}
                             ref={ref}

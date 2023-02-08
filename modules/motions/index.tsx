@@ -1,4 +1,7 @@
+import { Box } from '@chakra-ui/react';
+
 import Page from '@/common/components/page';
+import Text from '@/common/components/text';
 import ThumbnailList from './thumbnailList';
 import ThumbnailCarousel from './thumbnailCarousel';
 
@@ -45,11 +48,20 @@ const mock: SlideItem[] = [{
     label: 'Work Name',
 }];
 
+const MoreMotionsWrapper = ({ children }: React.PropsWithChildren) => (
+    <Box w="full" maxWidth="80vw" h="80vh" margin="16px auto" overflow="hidden">
+        {children}
+    </Box>
+);
+
 export default function MotionModule(props: MotionModuleProps) {
     return (
         <Page title="Motion">
             <ThumbnailCarousel slideItems={mock} />
-            {/* <ThumbnailList /> */}
+            <MoreMotionsWrapper>
+                <Text variant="h1" as="h1">More Motions</Text>
+                <ThumbnailList />
+            </MoreMotionsWrapper>
         </Page>
     );
 }

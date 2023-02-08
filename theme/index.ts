@@ -16,6 +16,7 @@ import VideoContainerStyle from './components/videoPlayer';
 import MenuIconButtonStyle from './components/menuItemButton';
 import IllustratorCardStyle from './components/illustratorCard';
 import PageStyle from './components/page';
+import DividerStyle from './components/divider';
 
 const overrides = {
   styles,
@@ -29,6 +30,7 @@ const overrides = {
     MenuIconButton: MenuIconButtonStyle,
     IllustratorCard: IllustratorCardStyle,
     Page: PageStyle,
+    Divider: DividerStyle,
   },
 }
 

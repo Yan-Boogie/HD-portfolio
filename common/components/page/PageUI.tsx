@@ -7,7 +7,7 @@ import useProvidedMultipartStyles from '@/common/hooks/useProvidedMultipartStyle
 
 export interface PageUIProps {};
 
-const IconButton = forwardRef<PageUIProps, 'div'>((props, ref) => {
+const PageUI = forwardRef<PageUIProps, 'div'>((props, ref) => {
     const { ...rest } = props;
 
     const styles = useProvidedMultipartStyles({ name: 'page' });
@@ -17,4 +17,4 @@ const IconButton = forwardRef<PageUIProps, 'div'>((props, ref) => {
     );
 });
 
-export default IconButton;
+export default PageUI;

@@ -13,6 +13,11 @@ const TextStyle = defineStyleConfig({
             fontWeight: 'normal',
             color: 'fontColors.secondary',
         },
+        h3: {
+            fontSize: { sm: 'xl', md: '2xl' },
+            fontWeight: 'normal',
+            color: 'fontColors.primary',
+        },
         paragraph: {
             fontSize: 'md',
             fontWeight: 'light',
