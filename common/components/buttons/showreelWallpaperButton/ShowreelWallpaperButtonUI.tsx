@@ -10,7 +10,7 @@ export interface ShowreelWallpaperButtonUIProps {
 
 /**
  * @todo
- * - Refactor the Image style
+ * - Refactor the Image style with css 'aspectRatio'
  */
 const ShowreelWallpaperButtonUI = forwardRef<ShowreelWallpaperButtonUIProps, 'button'>((props, ref) => {
     const { src, alt, children } = props;

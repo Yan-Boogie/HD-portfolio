@@ -1,19 +1,17 @@
 import type { GetStaticPaths, GetStaticProps } from 'next'; 
-import WorkModule from '@/modules/works';
+import WorksModule from '@/modules/works';
 import { sanityClient } from '@/modules/sanityServer/createClient';
 import type { IWork } from '@/modules/sanityServer/interfaces'; 
 
-interface WorkProps {
+interface WorksProps {
     work: IWork;
 }
 
-export default function Works(props: WorkProps) {
+export default function Works(props: WorksProps) {
     const { work } = props;
 
-    console.log('work-->\n', work);
-
     return (
-        <WorkModule />
+        <WorksModule work={work} />
     )
 }
 
@@ -42,7 +40,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
             description,
             cover
         }
-    `);
+    `).then((data) => ({
+        ...data[0],
+        video: data[0].video && {
+            ...data[0].video,
+            previewSrc: data[0].video.preview.asset._ref,
+        },
+        cover: data[0].cover?.asset._ref || null,
+    }));
 
     return { props: { work } };
 }

@@ -3,7 +3,7 @@ import type { BlockContentProps } from '@sanity/block-content-to-react';
 export interface IMovie {
     id: string;
     previewSrc: string;
-    movieUrl: string
+    movieUrl?: string
 }
 
 export interface IShowreel extends IMovie {};
@@ -17,5 +17,5 @@ export interface IWork {
     description?: string;
     video?: IMovie;
     cover?: string;
-    overView: BlockContentProps['blocks'];
+    overview: BlockContentProps['blocks'];
 };
