@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Text as CKUText, forwardRef, TextProps as CKUTextProps } from '@chakra-ui/react';
 import type { MotionVariants, MergeWithMotion, ReactFCWithRef } from '@/common/utils/typings';
 
-type TextMotionVariantTypes = 'visible' | 'invisible' | 'hovered' | 'init';
+export type TextMotionVariantTypes = 'visible' | 'invisible' | 'hovered' | 'init';
 
 const textVariants: MotionVariants<TextMotionVariantTypes> = {
     init: {

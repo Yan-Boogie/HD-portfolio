@@ -1,12 +1,14 @@
+import React from 'react';
 import { forwardRef, chakra } from '@chakra-ui/react';
+
 import VideoPlayer from '@/common/components/videoPlayer';
 import Text from '@/common/components/text';
-
 import type { ListItem } from '../../types';
 
 export interface ThumbnailCardUIProps {
     listItem: ListItem;
     smoothBorder?: boolean;
+    motionText: React.ReactNode;
 };
 
 const BUTTON_WIDTH = '100%';
@@ -23,6 +25,7 @@ const StyledButton = forwardRef<StyledButtonProps, 'button'>((props, ref) => {
     return (
         <chakra.div
             ref={ref}
+            pos="relative"
             borderRadius={smoothBorder ? 6 : 0}
             backgroundColor="black"
             as="button"
@@ -35,12 +38,26 @@ const StyledButton = forwardRef<StyledButtonProps, 'button'>((props, ref) => {
     );
 });
 
+export const StyledText = forwardRef<React.PropsWithChildren, 'h1'>(({ children }, ref) => (
+    <Text
+        ref={ref}
+        as="h1"
+        initial="init"
+        pos="absolute"
+        left="8"
+        bottom={0}
+        zIndex="docked"
+        variant="h1"
+    >{children}</Text>
+));
+
 const ThumbnailCardUI = forwardRef<ThumbnailCardUIProps, 'button'>((props, ref) => {
-    const { listItem: { onClick, text, ...rest }, smoothBorder = false } = props;
+    const { listItem: { onClick, ...rest }, smoothBorder = false, motionText } = props;
 
     return (
         <StyledButton ref={ref} smoothBorder={smoothBorder} onClick={onClick}>
             <VideoPlayer thumbnail {...rest} />
+            {motionText}
         </StyledButton>
     );
 });
