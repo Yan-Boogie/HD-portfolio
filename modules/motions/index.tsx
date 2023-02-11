@@ -1,4 +1,4 @@
-import { Box, Divider, DividerProps } from '@chakra-ui/react';
+import { Divider, DividerProps } from '@chakra-ui/react';
 
 import Page from '@/common/components/page';
 import Text, { TextProps } from '@/common/components/text';
