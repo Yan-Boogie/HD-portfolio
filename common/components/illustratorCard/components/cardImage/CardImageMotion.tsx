@@ -12,7 +12,7 @@ type CardImageMotionVariants = {
 const cardImageMotionVariants: CardImageMotionVariants = {
     unviewed: { opacity: 0 },
     unhovered: { opacity: 1 },
-    hovered: { opacity: 1, scale: 1.03 },
+    hovered: { opacity: 1, scale: 1.05 },
 };
 
 type MergedMotionProps = MergeWithMotion<CardImageUIProps>;
@@ -26,7 +26,7 @@ const CardImageMotion = forwardRef<CardImageMotionProps, 'div'>((props, ref) => 
         <MotionCardImage
             ref={ref}
             whileHover="hovered"
-            transition={{ type: 'Tween', duration: 1 }}
+            transition={{ type: 'Tween', duration: 0.7 }}
             variants={cardImageMotionVariants}
             {...rest} />
     )
