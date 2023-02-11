@@ -99,12 +99,11 @@ const StyledText = (props: TextProps) => (
 
 const StyledDivider = (props: DividerProps) => (
     <Divider
-        marginBottom={{
-            lg: '10rem',
-            md: '8rem',
-            base: '4rem',
+        margin={{
+            lg: '0 auto 10rem auto',
+            md: '0 auto 8rem auto',
+            base: '0 auto 4rem auto',
         }}
-        margin="0 auto"
         width="20%"
         borderWidth={3}
         borderRadius={3}

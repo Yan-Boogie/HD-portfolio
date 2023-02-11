@@ -1,7 +1,7 @@
-import { PropsWithChildren, useState } from 'react';
-import { useMediaQuery, chakra } from '@chakra-ui/react';
+import { PropsWithChildren } from 'react';
+import { useMediaQuery, chakra, VStack } from '@chakra-ui/react';
 
-import ThumbnailButton from './components/thumbnailCard';
+import ThumbnailCard from './components/thumbnailCard';
 import ThumbnailColumn from './components/thumbnailColumn';
 import type { ListItem } from './types';
 
@@ -45,74 +45,38 @@ const DesktopList = (props: ThumbnailListProps) => {
     );
 };
 
-// const MobileList = (props: ThumbnailListProps) => {
-//     const [data, setData] = useState<(Thumbnail | null)[]>([]);
+const StyledMobileWrapper = ({ children }: PropsWithChildren) => (
+    <VStack spacing={8} width="84%" margin="0 auto">
+        {children}
+    </VStack>
+);
 
-//     if (data.length === 0) setData(Array.from(Array(100)).map(_ => null));
-
-//     const isItemLoaded = (index: number) => index < data.length && data[index] !== null;
-
-//     const loadMoreItems = (startIndex: number, stopIndex: number) => {
-//         console.log('load more!!\n')
-
-//         return new Promise<void>((resolve) => {
-//             setTimeout(() => {
-//                 const newData = [...data];
-
-//                 for (let idx = startIndex; idx < stopIndex; idx++) {
-//                     newData[idx] = mockData;
-//                 }
-
-//                 setData(newData);
-
-//                 resolve();
-//             }, 2000);
-//         });
-//     };
-
-//     return (
-//         <AutoSizer>
-//             {({ height, width }) => (
-//                 <InfiniteLoader
-//                     isItemLoaded={isItemLoaded}
-//                     itemCount={data.length}
-//                     loadMoreItems={loadMoreItems}
-//                 >
-//                     {({ onItemsRendered, ref }) => (
-//                          <List
-//                             height={height}
-//                             width={width}
-//                             itemCount={data.length}
-//                             itemSize={CARD_HEIGHT_PIXEL + MOBILE_MARGIN}
-//                             itemData={data}
-//                             onItemsRendered={onItemsRendered}
-//                             ref={ref}
-//                         >
-//                             {({ style, index, data }) => (
-//                                 <ThumbnailButton windowItem={{ data, index, style }} />
-//                             )}
-//                         </List>
-//                     )}
-//                 </InfiniteLoader>
-//             )}
-//         </AutoSizer>
-//     );
-// };
-
-const ThumbnailList = (props: ThumbnailListProps) => {
-    const [isLargerThanMd] = useMediaQuery('(min-width: 768px)');
-
-    if (isLargerThanMd) return (
-        <DesktopList {...props} />
-    );
+const MobileList = (props: ThumbnailListProps) => {
+    const { listItems } = props;
 
     return (
-        <DesktopList {...props} />
+        <StyledMobileWrapper>
+            {listItems.map((el) => (
+                <ThumbnailCard smoothBorder key={el.idx} listItem={el} />
+            ))}
+        </StyledMobileWrapper>
+    )
+};
+
+const ThumbnailList = (props: ThumbnailListProps) => {
+    const [isLargerThanSm] = useMediaQuery('(min-width: 480px)');
+
+    const renderList = () => isLargerThanSm ? <DesktopList {...props} /> : <MobileList {...props} />;
+
+    return (
+        <chakra.div marginBottom={{
+            lg: '18rem',
+            md: '12rem',
+            base: '4rem',
+        }}>
+            {renderList()}
+        </chakra.div>
     );
-    
-    // return (
-    //     <MobileList {...props} />
-    // )
 }
 
 export default ThumbnailList;

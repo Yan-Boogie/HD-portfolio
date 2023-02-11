@@ -6,18 +6,21 @@ import type { ListItem } from '../../types';
 
 export interface ThumbnailCardProps {
     listItem: ListItem;
+    smoothBorder?: boolean;
 };
 
 const BUTTON_WIDTH = '100%';
 const BUTTON_ASPECT_RATIO = 0.8;
 
 const StyledButton = (props: React.PropsWithChildren<{
+    smoothBorder: boolean;
     onClick: React.MouseEventHandler<HTMLButtonElement | HTMLDivElement>;
 }>) => {
-    const { onClick, children } = props;
+    const { onClick, children, smoothBorder } = props;
 
     return (
         <chakra.div
+            borderRadius={smoothBorder ? 6 : 0}
             backgroundColor="black"
             as="button"
             w={BUTTON_WIDTH}
@@ -30,10 +33,10 @@ const StyledButton = (props: React.PropsWithChildren<{
 };
 
 const ThumbnailCard = forwardRef<ThumbnailCardProps, 'button'>((props) => {
-    const { listItem: { onClick, text, ...rest } } = props;
+    const { listItem: { onClick, text, ...rest }, smoothBorder = false } = props;
 
     return (
-        <StyledButton onClick={onClick}>
+        <StyledButton smoothBorder={smoothBorder} onClick={onClick}>
             <VideoPlayer thumbnail {...rest} />
         </StyledButton>
     );
