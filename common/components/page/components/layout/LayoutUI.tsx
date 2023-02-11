@@ -103,13 +103,14 @@ export const TitleUI = forwardRef<TitleUIProps, 'div'>((props, ref) => {
 
 export const ScrollDownUI = forwardRef<{}, 'div'>((_, ref) => {
     return (
-        <chakra.div ref={ref} pos="fixed" bottom="5%" left="10%" display="flex" flexDirection="column">
+        <chakra.div ref={ref} pos="fixed" bottom="5%" left="10%" display="flex" flexDirection="column" zIndex="sticky">
             <Text
-                margin="0 0 10px 10px"
+                fontSize="xl"
+                margin="0 0 10px 14px"
                 color="fontColors.primary">
                 Scroll Down
             </Text>
-            <HiOutlineArrowNarrowDown size={32} stroke="var(--chakra-colors-fontColors-primary)" />
+            <HiOutlineArrowNarrowDown size={40} stroke="var(--chakra-colors-fontColors-primary)" />
         </chakra.div>
     );
 });

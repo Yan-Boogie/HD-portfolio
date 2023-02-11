@@ -46,15 +46,9 @@ const LayoutMotion = forwardRef<LayoutMotionProps, 'div'>((props, ref) => {
         if (isFooterInView) return () => {};
 
         const onScroll = (el: number) => {
-            if (el <= 0) {
-                setHeaderVariant('');
-                setScrollDownVariant('active');
-            };
+            if (el <= 0) setHeaderVariant('');
 
-            if (el > 0) {
-                setHeaderVariant('transparent');
-                setScrollDownVariant('hidden');
-            }
+            if (el > 0) setHeaderVariant('transparent');
         };
 
         const unsubScrollY = scrollY.onChange(onScroll);
@@ -67,6 +61,10 @@ const LayoutMotion = forwardRef<LayoutMotionProps, 'div'>((props, ref) => {
     useEffect(() => {
         if (isFooterInView && scrollY.get() > 0) setHeaderVariant('hidden');
     }, [isFooterInView, scrollY]);
+
+    useEffect(() => {
+        if (isFooterInView) setScrollDownVariant('hidden');
+    }, [isFooterInView]);
 
     return (
         <MotionLayout
@@ -84,8 +82,7 @@ const LayoutMotion = forwardRef<LayoutMotionProps, 'div'>((props, ref) => {
                     <MotionScrollDown
                         animate={scrollDownVariant}
                         transition={scrollDownVariant === 'active' ? {
-                            duration: 3,
-                            ease: 'easeInOut',
+                            duration: 2,
                             repeat: Infinity,
                         } : {}}
                         variants={scrollDownMotionVariants}
