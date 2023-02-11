@@ -1,17 +1,18 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Divider, DividerProps } from '@chakra-ui/react';
 
 import Page from '@/common/components/page';
-import Text from '@/common/components/text';
+import Text, { TextProps } from '@/common/components/text';
 import ThumbnailList from './thumbnailList';
 import ThumbnailCarousel from './thumbnailCarousel';
 
 import type { SlideItem } from './thumbnailCarousel/types';
+import type { ListItem } from './thumbnailList/types';
 
 export interface MotionModuleProps {
 
 }
 
-const mock: SlideItem[] = [{
+const mockSlides: SlideItem[] = [{
     idx: '0',
     url: 'https://vimeo.com/714795278',
     previewAlt: 'mock',
@@ -48,20 +49,75 @@ const mock: SlideItem[] = [{
     label: 'Work Name',
 }];
 
-const MoreMotionsWrapper = ({ children }: React.PropsWithChildren) => (
-    <Box w="full" maxWidth="80vw" h="80vh" margin="16px auto" overflow="hidden">
-        {children}
-    </Box>
+const mockList: ListItem[] = [{
+    idx: '1',
+    url: 'https://vimeo.com/714795278',
+    previewAlt: 'mock',
+    previewSrc: '/mock/mock-1.jpg',
+    text: 'Work',
+    onClick: () => console.log('clicked'),
+}, {
+    idx: '2',
+    url: 'https://vimeo.com/714795278',
+    previewAlt: 'mock',
+    previewSrc: '/mock/mock-1.jpg',
+    text: 'Work',
+    onClick: () => console.log('clicked'),
+}, {
+    idx: '3',
+    url: 'https://vimeo.com/714795278',
+    previewAlt: 'mock',
+    previewSrc: '/mock/mock-1.jpg',
+    text: 'Work',
+    onClick: () => console.log('clicked'),
+}, {
+    idx: '4',
+    url: 'https://vimeo.com/714795278',
+    previewAlt: 'mock',
+    previewSrc: '/mock/mock-1.jpg',
+    text: 'Work',
+    onClick: () => console.log('clicked'),
+}, {
+    idx: '5',
+    url: 'https://vimeo.com/714795278',
+    previewAlt: 'mock',
+    previewSrc: '/mock/mock-1.jpg',
+    text: 'Work',
+    onClick: () => console.log('clicked'),
+}, {
+    idx: '6',
+    url: 'https://vimeo.com/714795278',
+    previewAlt: 'mock',
+    previewSrc: '/mock/mock-1.jpg',
+    text: 'Work',
+    onClick: () => console.log('clicked'),
+}];
+
+const StyledText = (props: TextProps) => (
+    <Text textAlign="center" variant="h1" as="h1">{props.children}</Text>
+);
+
+const StyledDivider = (props: DividerProps) => (
+    <Divider
+        marginBottom={{
+            lg: '10rem',
+            md: '8rem',
+            base: '4rem',
+        }}
+        margin="0 auto"
+        width="20%"
+        borderWidth={3}
+        borderRadius={3}
+        {...props} />
 );
 
 export default function MotionModule(props: MotionModuleProps) {
     return (
         <Page title="Motion">
-            <ThumbnailCarousel slideItems={mock} />
-            <MoreMotionsWrapper>
-                <Text variant="h1" as="h1">More Motions</Text>
-                <ThumbnailList />
-            </MoreMotionsWrapper>
+            <ThumbnailCarousel slideItems={mockSlides} />
+            <StyledText>More Motions</StyledText>
+            <StyledDivider />
+            <ThumbnailList listItems={mockList} />
         </Page>
     );
 }

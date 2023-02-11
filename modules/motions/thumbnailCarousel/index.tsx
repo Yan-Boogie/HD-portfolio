@@ -14,7 +14,17 @@ export interface ThumbnailCarouselProps {
 };
 
 const Wrapper = forwardRef<{ children: React.ReactNode[]}, 'div'>(({ children }, ref) => (
-    <chakra.div ref={ref} margin="4rem 0" display="flex" w="full" pos="relative" backgroundColor="black">
+    <chakra.div
+        ref={ref}
+        margin={{
+            lg: '4rem 0 18rem 0',
+            md: '2rem 0 12rem 0',
+            base: '2rem 0 4rem 0',
+        }}
+        display="flex"
+        w="full"
+        pos="relative"
+        backgroundColor="black">
         {children}
     </chakra.div>
 ));
