@@ -66,7 +66,7 @@ const PageStyle = helpers.defineMultiStyleConfig({
             justifyContent: 'space-between',
             padding: {
                 md: '0 var(--chakra-space-20)',
-                base: '0 var(--chakra-space-4)',
+                base: '0 var(--chakra-space-6)',
             },
             backgroundColor: 'brand.primary',
         },

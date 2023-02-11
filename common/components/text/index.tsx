@@ -1,5 +1,5 @@
-import TextMotion from './TextMotion';
+import TextMotion, { TextMotionProps } from './TextMotion';
 
-const Text = TextMotion;
+export type TextProps = TextMotionProps;
 
-export default Text;
+export default TextMotion;

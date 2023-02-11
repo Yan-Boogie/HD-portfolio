@@ -3,25 +3,25 @@ import { defineStyleConfig } from '@chakra-ui/react'
 const TextStyle = defineStyleConfig({
     variants: {
         h1: {
-            fontSize: { sm: '4xl', md: '6xl' },
-            fontWeight: 'medium',
-            margin: 2,
+            fontSize: { base: '3xl', sm: '4xl', md: '6xl' },
+            fontWeight: 'bold',
+            margin: 'var(--chakra-space-8) 0',
             color: 'fontColors.primary',
         },
         h2: {
-            fontSize: { sm: '2xl', md: '3xl' },
-            fontWeight: 'normal',
+            fontSize: { base: '2xl', sm: '3xl', md: '4xl' },
+            fontWeight: 'bold',
             color: 'fontColors.secondary',
         },
         h3: {
-            fontSize: { sm: 'xl', md: '2xl' },
-            fontWeight: 'normal',
+            fontSize: { base: 'xl', sm: '2xl', md: '3xl' },
+            fontWeight: 'bold',
             color: 'fontColors.primary',
         },
         paragraph: {
-            fontSize: 'md',
-            fontWeight: 'light',
-            color: 'gray.300',
+            fontSize: 'lg',
+            fontWeight: 'normal',
+            color: 'gray.600',
         },
     },
     defaultProps: {

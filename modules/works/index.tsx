@@ -1,5 +1,4 @@
-import { chakra } from '@chakra-ui/react';
-import { Image } from '@chakra-ui/react';
+import { Image, chakra, Divider } from '@chakra-ui/react';
 import { getImageDimensions } from '@sanity/asset-utils';
 
 import { urlFor } from '../sanityServer/imageUrlBuilder';
@@ -18,9 +17,29 @@ const StyledWrapper = ({ children }: React.PropsWithChildren) => (
     <chakra.div
         margin="0 auto"
         width="full"
+        padding={6}
         maxWidth="5xl">
         {children}
     </chakra.div>
+);
+
+const ContentBlock = ({ children }: React.PropsWithChildren) => (
+    <chakra.div
+        width="full"
+        margin="var(--chakra-space-20) 0">
+        {children}
+    </chakra.div>
+);
+
+const StyledDivider = () => (
+    <Divider
+        marginBottom={{
+            md: 32,
+            base: 16,
+        }}
+        orientation="horizontal"
+        borderWidth={2}
+        borderRadius={2} />
 );
 
 export default function WorksModule(props: WorksModuleProps) {
@@ -48,8 +67,6 @@ export default function WorksModule(props: WorksModuleProps) {
 
         const { video: { previewSrc, movieUrl } } = work;
 
-        console.log('video', work.video);
-
         if (!movieUrl) {
             const { width, height } = getImageDimensions(previewSrc);
 
@@ -59,7 +76,7 @@ export default function WorksModule(props: WorksModuleProps) {
                     alt=""
                     sx={{
                         width: 'full',
-                        aspectRatio: width / height,
+                        aspectRatio: `${width / height}`,
                     }} />
             )
         }
@@ -73,8 +90,11 @@ export default function WorksModule(props: WorksModuleProps) {
         <Page>
             <StyledWrapper>
                 {work.workType === 'illustration' ? renderCover() : renderVideo()}
-                <Text variant="h1">{work.title}</Text>
-                <Serializer value={work.overview} />
+                <ContentBlock>
+                    <Text variant="h1">{work.title}</Text>
+                    <StyledDivider />
+                    <Serializer value={work.overview} />
+                </ContentBlock>
             </StyledWrapper>
         </Page>
     );
