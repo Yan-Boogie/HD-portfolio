@@ -6,7 +6,7 @@ import IconButton from '@/common/components/buttons/iconButton';
 import { Diamond, CarouselLeft, CarouselRight } from '@/common/components/icons/';
 import CarouselItem from './components/carouselItem/';
 import type { SlideItem } from './types';
-import { VIDEO_HEIGHT, VIDEO_WIDTH } from './constants';
+import { VIDEO_ASPECT_RATIO, VIDEO_WIDTH, INDICATOR_SIZE, PREV_NEXT_SIZE } from './constants';
 
 
 export interface ThumbnailCarouselProps {
@@ -25,7 +25,7 @@ const MotionWrapper = motion(Wrapper);
 interface IndicatorProps { active: boolean; num: number, onClick: (_: number) => void; };
 const Indicator = ({ active, num, onClick }: IndicatorProps) => (
     <IconButton animate={active ? 'active' : 'inactive'} margin="2" aria-label="indicator" onClick={() => onClick(num)}>
-        <Diamond fontSize={['2xl', '3xl']} motiontype="noCircle" />
+        <Diamond fontSize={INDICATOR_SIZE} motiontype="noCircle" />
     </IconButton>
 );
 
@@ -37,8 +37,6 @@ const ThumbnailCarousel = (props: ThumbnailCarouselProps) => {
     const wrapperRef = useRef(null);
     const isWrapperInView = useInView(wrapperRef, { once: true });
 
-    console.log('isWrapperInView-->\n', isWrapperInView);
-
     const renderIndicators = () => (
         <chakra.div  pos="absolute" top="2" left="50%" transform="translateX(-50%)" display="flex" flexWrap="nowrap">
             {slideItems.map((el, idx) => (
@@ -48,27 +46,27 @@ const ThumbnailCarousel = (props: ThumbnailCarouselProps) => {
     );
 
     const renderPrev = () => (
-        <IconButton pos="absolute" left="2" top="50%" aria-label="prev button" onClick={() => setActivate(prev => {
+        <IconButton pos="absolute" left="2" top="50%" transform="translateY(-50%)" aria-label="prev button" onClick={() => setActivate(prev => {
             if (prev === 0) return slideItems.length - 1;
 
             return prev - 1;
         })}>
-            <CarouselLeft motiontype="full" />
+            <CarouselLeft fontSize={PREV_NEXT_SIZE} motiontype="full" />
         </IconButton>
     );
 
     const renderNext = () => (
-        <IconButton pos="absolute" right="2" top="50%" aria-label="next button" onClick={() => setActivate(prev => {
+        <IconButton pos="absolute" right="2" top="50%" transform="translateY(-50%)" aria-label="next button" onClick={() => setActivate(prev => {
             if (prev === slideItems.length - 1) return 0;
 
             return prev + 1;
         })}>
-            <CarouselRight motiontype="full" />
+            <CarouselRight fontSize={PREV_NEXT_SIZE} motiontype="full" />
         </IconButton>
     );
 
     const renderPadder = () => (
-        <chakra.div w={VIDEO_WIDTH} h={VIDEO_HEIGHT} />
+        <chakra.div w={VIDEO_WIDTH} sx={{ aspectRatio: VIDEO_ASPECT_RATIO }} />
     )
 
     return (

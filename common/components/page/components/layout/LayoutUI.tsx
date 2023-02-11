@@ -93,7 +93,7 @@ export const TitleUI = forwardRef<TitleUIProps, 'div'>((props, ref) => {
     const styles = useProvidedMultipartStyles({ name: 'title' });
 
     return (
-        <chakra.div pos="relative" w="full" h="100vh">
+        <chakra.div pos="relative" w="full" h={{ lg: '100vh', md: 'xl', base: 'sm' }}>
             <Text as="h1" variant="h1" sx={styles} ref={ref}>
                 {title}
             </Text>

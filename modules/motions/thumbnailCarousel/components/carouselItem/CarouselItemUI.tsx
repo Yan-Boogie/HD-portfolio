@@ -1,7 +1,7 @@
 import { chakra, forwardRef } from '@chakra-ui/react';
 
 import VideoPlayer from '@/common/components/videoPlayer';
-import { VIDEO_HEIGHT, VIDEO_WIDTH } from '../../constants';
+import { VIDEO_ASPECT_RATIO, VIDEO_WIDTH } from '../../constants';
 import type { SlideItem } from '../../types';
 
 export interface CarouselItemUIProps {
@@ -23,8 +23,8 @@ const StyledButton = forwardRef<StyledButton, 'button'>((props, ref) => {
             transform="translateX(-50%)"
             top="0"
             as="button"
-            h={VIDEO_HEIGHT}
             w={VIDEO_WIDTH}
+            sx={{ aspectRatio: VIDEO_ASPECT_RATIO }}
             onClick={onClick}
         >
             {children}

@@ -13,6 +13,7 @@ const PreviewImageUI = forwardRef<PreviewImageUIProps, 'img'>((props, ref) => {
             pos="absolute"
             height="full"
             margin="0 auto"
+            objectFit="cover"
             left="50%"
             transform="translateX(-50%)"
             zIndex="docked"

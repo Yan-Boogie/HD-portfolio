@@ -15,9 +15,7 @@ const PageStyle = helpers.defineMultiStyleConfig({
     baseStyle: {
         page: {
             width: 'full',
-            backgroundImage: 'url("/img-noise.png")',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'repeat',
+            backgroundColor: 'var(--chakra-colors-brand-primary)',
         },
         transition: {
             width: '100vw',
@@ -103,10 +101,25 @@ const PageStyle = helpers.defineMultiStyleConfig({
         },
         title: {
             position: 'absolute',
-            right: '20%',
-            top: '18%',
+            right: {
+                lg: '20%',
+                base: '50%',
+            },
+            transform: {
+                lg: 'translate(0%, 0%)',
+                base: 'translate(50%, -50%)',
+            },
+            top: {
+                lg: '18%',
+                base: '50%',
+            },
             fontWeight: 'black',
-            fontSize: '9xl',
+            fontSize: {
+                xl: '9xl',
+                lg: '8xl',
+                md: '7xl',
+                base: '6xl',
+            },
             letterSpacing: 'wide',
         },
     }
