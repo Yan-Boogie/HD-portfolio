@@ -11,8 +11,6 @@ export interface VideoSerializerProps {
 const VideoSerializer = (props: VideoSerializerProps) => {
     const { value } = props;
 
-    console.log('props-->\n', props);
-
     if (!value.videoSource) {
         const previewSrc = value.preview.asset._ref;
         

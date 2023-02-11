@@ -9,8 +9,6 @@ export interface ImageSerializerProps {
 const ImageSerializer = ({ value }: ImageSerializerProps) => {
     const { width, height } = getImageDimensions(value);
 
-    console.log('value-->\n', value, width, height);
-
     return (
         <Box margin="0 0 var(--chakra-space-6) 0" width="full" display="flex" justifyContent="center" alignItems="center">
             <Image
