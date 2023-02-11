@@ -35,8 +35,6 @@ const DesktopList = (props: ThumbnailListProps) => {
         return bundle;
     }, [[], []]);
 
-    console.log('columnListBundle-->\n', columnListBundle);
-
     return (
         <StyledDesktopWrapper>
             <ThumbnailColumn columnIdx={0} columnItems={columnListBundle[0]} />

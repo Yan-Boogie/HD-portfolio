@@ -14,8 +14,8 @@ const CardImageUI = forwardRef<CardImageUIProps, 'div'>((props, ref) => {
 
     return (
         <Button variant="unstyled" __css={styles.cardImageContainer} onClick={onClick}>
-            <Image ref={ref} __css={styles.hiddenCardImage} src={src} alt={alt} />
-            <Image ref={ref} __css={styles.cardImage} src={src} alt={alt} />
+            <Image objectFit="cover" ref={ref} __css={styles.hiddenCardImage} src={src} alt={alt} />
+            <Image objectFit="cover" ref={ref} __css={styles.cardImage} src={src} alt={alt} />
         </Button>
     );
 });

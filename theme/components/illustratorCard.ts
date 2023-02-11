@@ -14,14 +14,18 @@ const IllustratorCardStyle = helpers.defineMultiStyleConfig({
         card: {
             position: 'relative',
             backgroundColor: 'transparent',
+            display: 'flex',
+            flexDirection: 'row-reverse',
             width: 'full',
-            maxWidth: '740px',
+            maxWidth: '800px',
+            margin: '0 auto',
         },
         cardImageContainer: {
             position: 'relative',
             overflow: 'hidden',
             borderRadius: 15,
-            margin: '0 0 var(--chakra-space-6) 0',
+            aspectRatio: '0.8',
+            width: '30%',
         },
         hiddenCardImage: {
             width: 'full',
@@ -36,9 +40,21 @@ const IllustratorCardStyle = helpers.defineMultiStyleConfig({
         },
         cardTitle: {
             color: 'fontColors.primary',
-            fontSize: '3xl',
+            fontSize: '4xl',
             fontWeight: 'medium',
-            margin: 'var(--chakra-space-2)',
+            letterSpacing: '1px',
+            margin: '0 0 var(--chakra-space-5) 0',
+        },
+        cardDescription: {
+            fontSize: 'xl',
+            margin: '0 0 var(--chakra-space-10) 0',
+            letterSpacing: '1px',
+        },
+        cardBody: {
+            width: '70%',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
         },
     },
 });

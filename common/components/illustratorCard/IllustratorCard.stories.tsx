@@ -11,5 +11,7 @@ export const Base = () => (
     <IllustratorCard
         src="/mock/mock-1.jpg"
         alt="mock image"
+        title="Title Title"
+        description="Description Description"
         onClick={() => console.log('clicked')} />
 );
