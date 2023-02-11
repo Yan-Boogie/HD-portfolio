@@ -48,6 +48,8 @@ export default function WorksModule(props: WorksModuleProps) {
 
         const { video: { previewSrc, movieUrl } } = work;
 
+        console.log('video', work.video);
+
         if (!movieUrl) {
             const { width, height } = getImageDimensions(previewSrc);
 

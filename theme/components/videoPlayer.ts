@@ -7,8 +7,8 @@ const VideoContainerStyle = defineStyleConfig({
         cursor: 'pointer',
         position: 'relative',
         overflow: 'hidden',
-        width: { sm: '380px', md: '1280px' },
-        height: { sm: '220px', md: '720px' },
+        width: 'full',
+        aspectRatio: '1.8',
         margin: 'auto auto',
     },
     variants: {
