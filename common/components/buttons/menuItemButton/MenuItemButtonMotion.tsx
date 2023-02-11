@@ -3,28 +3,32 @@ import { forwardRef } from '@chakra-ui/react';
 import MenuItemButtonUI, { MenuItemButtonUIProps, BorderLine, BorderLineProps } from './MenuItemButtonUI';
 import type { MotionVariants, MergeWithMotion, ReactFCWithRef } from '@/common/utils/typings';
 
-type MotionVariantTypes = 'hovered' | 'unhovered';
+type MotionVariantTypes = 'hovered' | 'unhovered' | 'tap';
 
 const motionVariantTypes: {
     [K in MotionVariantTypes]: K
 } = {
     hovered: 'hovered',
     unhovered: 'unhovered',
+    tap: 'tap',
 };
 
 const buttonVariants: MotionVariants<MotionVariantTypes> = {
     hovered: { opacity: 1 },
     unhovered: { opacity: 0.3 },
+    tap: { opacity: 1 },
 };
 
 const disabledButtonVariants: MotionVariants<MotionVariantTypes> = {
     hovered: { opacity: 0.5 },
     unhovered: { opacity: 0.5 },
+    tap: { opacity: 0.5 },
 };
 
 const borderLineVariants: MotionVariants<MotionVariantTypes> = {
     unhovered: { transform: 'translateX(-100%)' },
     hovered: { transform: 'translateX(0%)' },
+    tap: { transform: 'translateX(0%)', transition: { duration: 0.01 } },
 };
 
 type MergedMotionProps = MergeWithMotion<MenuItemButtonUIProps>;
@@ -43,6 +47,7 @@ const MenuItemButtonMotion = forwardRef<MenuItemButtonMotionProps, 'button'>((pr
             disabled={disabled}
             initial={motionVariantTypes.unhovered}
             whileHover={motionVariantTypes.hovered}
+            whileTap={motionVariantTypes.tap}
             variants={disabled ? disabledButtonVariants : buttonVariants}
             {...rest}>
             {children}

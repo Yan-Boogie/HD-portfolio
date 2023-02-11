@@ -33,7 +33,7 @@ const StyledCenter = (props: CenterProps) => (
 );
 
 const StyledIconButton = (props: IconButtonProps) => (
-    <IconButton pos="absolute" right={20} top={8} {...props} />
+    <IconButton pos="absolute" right={{ md: 20, base: 4 }} top={{ md: 8, base: 4 }} {...props} />
 );
 
 export default function MenuModule() {
@@ -43,7 +43,7 @@ export default function MenuModule() {
         <Page withLayout={false}>
             <StyledCenter>
                 <StyledIconButton aria-label="close" onClick={() => router.back()}>
-                    <Close motiontype="full" />
+                    <Close fontSize={['6xl', '6xl']} motiontype="full" />
                 </StyledIconButton>
                 {menuItems.map((item, idx) => (
                     <Link href={item.url} key={idx}>
