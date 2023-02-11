@@ -26,7 +26,7 @@ export const HeaderUI = forwardRef<{}, 'div'>((_, ref) => {
     return (
         <chakra.div __css={styles} ref={ref}>
             <Link href="/">
-                <Image src="/hd-design-logo.png" w={40} alt="logo" />
+                <Image src="/hd-design-logo.png" w={{ md: 40, base: 24 }} alt="logo" />
             </Link>
             <Link href="/menu">
                 <IconButton aria-label="menu">
