@@ -19,6 +19,12 @@ import PageStyle from './components/page';
 import DividerStyle from './components/divider';
 
 const overrides = {
+  fonts: {
+    heading: `'Moguine Serif Italic'`,
+    body: `'Moguine Serif Italic'`,
+    mono: `'Moguine Serif Italic'`,
+    i: `'Moguine Serif Italic'`,
+  },
   styles,
   colors,
   components: {
