@@ -1,8 +1,3 @@
-/**
- * @Refactor
- * set w & h in different screen size
- */
-
 export const VIDEO_WIDTH = {
     xl: '1480px',
     lg: '1180px',

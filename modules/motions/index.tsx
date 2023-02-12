@@ -94,7 +94,7 @@ const mockList: ListItem[] = [{
 }];
 
 const StyledText = (props: TextProps) => (
-    <Text textAlign="center" variant="h1" as="h1">{props.children}</Text>
+    <Text textAlign="center" variant="h1" fontSize={['3xl', '4xl', '8xl']} margin="var(--chakra-space-12) 0 0 0" as="h1">{props.children}</Text>
 );
 
 const StyledDivider = (props: DividerProps) => (
@@ -104,8 +104,8 @@ const StyledDivider = (props: DividerProps) => (
             md: '0 auto 8rem auto',
             base: '0 auto 4rem auto',
         }}
-        width="20%"
-        borderWidth={3}
+        width="48%"
+        borderWidth={2}
         borderRadius={3}
         {...props} />
 );
