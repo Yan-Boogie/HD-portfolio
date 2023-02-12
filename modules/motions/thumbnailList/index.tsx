@@ -9,8 +9,6 @@ export interface ThumbnailListProps {
     listItems: ListItem[];
 };
 
-const MOBILE_MARGIN = 24;
-
 const StyledDesktopWrapper = ({ children }: PropsWithChildren) => (
     <chakra.div
         display="flex"
