@@ -38,13 +38,14 @@ export const StyledText = forwardRef<React.PropsWithChildren, 'h1'>(({ children 
     <Text
         ref={ref}
         as="h1"
+        fontSize={{ xl: '8xl', md: '6xl', sm: '5xl', base: '4xl' }}
         variant="h1"
         initial="init"
         zIndex="docked"
         pos="absolute"
-        top="10%"
-        left="10%"
-        color="fontColors.secondary">
+        bottom="4%"
+        left="8%"
+        color="white">
         {children}
     </Text>
 ));

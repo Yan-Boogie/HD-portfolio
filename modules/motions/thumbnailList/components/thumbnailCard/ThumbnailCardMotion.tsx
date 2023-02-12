@@ -24,7 +24,7 @@ const TextMotionVariants: TextMotionVariants = {
     unviewed: { opacity: 0, x: -12 },
     viewed: { opacity: 0, x: -12 },
     hovered: { opacity: 1, x: 0, transition: { delay: 0.1 } },
-}
+};
 
 const MotionText = motion<any>(StyledText);
 

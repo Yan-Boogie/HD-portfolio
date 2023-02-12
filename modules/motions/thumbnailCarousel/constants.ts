@@ -4,13 +4,13 @@
  */
 
 export const VIDEO_WIDTH = {
-    xl: '1080px',
-    lg: '720px',
-    md: '560px',
-    base: '340px',
+    xl: '1480px',
+    lg: '1180px',
+    md: '880px',
+    base: '480px',
 };
 
-export const VIDEO_ASPECT_RATIO = '1.3';
+export const VIDEO_ASPECT_RATIO = `${16 / 9}`;
 
 export const INDICATOR_SIZE = {
     md: '3xl',

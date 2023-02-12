@@ -46,7 +46,7 @@ export const StyledText = forwardRef<React.PropsWithChildren, 'h1'>(({ children 
         pos="absolute"
         left="8"
         bottom={0}
-        color="fontColors.secondary"
+        color="white"
         zIndex="docked"
         variant="h1"
     >{children}</Text>

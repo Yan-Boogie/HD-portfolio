@@ -20,9 +20,9 @@ import DividerStyle from './components/divider';
 
 const overrides = {
   fonts: {
-    heading: `'Moguine Serif Italic'`,
-    body: `'Moguine Serif Italic'`,
-    mono: `'Moguine Serif Italic'`,
+    heading: `'Moguine Serif'`,
+    body: `'Moguine Serif'`,
+    mono: `'Moguine Serif'`,
     i: `'Moguine Serif Italic'`,
   },
   styles,
