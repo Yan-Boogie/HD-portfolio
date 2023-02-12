@@ -69,15 +69,11 @@ const PageStyle = helpers.defineMultiStyleConfig({
             backgroundColor: 'brand.primary',
         },
         footer: {
-            position: 'relative',
             width: 'full',
-            height: 40,
-            display: 'flex',
-            flexDirection: 'row',
-            alignItems: 'center',
-            justifyContent: 'flex-end',
-            overflow: 'hidden',
-            padding: 'var(--chakra-space-8) var(--chakra-space-20)',
+            height: {
+                base: 20,
+                md: 40,
+            },
         },
         footerLink: {
             zIndex: 'docked',

@@ -5,7 +5,7 @@ import { HiOutlineArrowNarrowDown } from 'react-icons/hi';
 import useProvidedMultipartStyles from '@/common/hooks/useProvidedMultipartStyles';
 import Text from '@/common/components/text';
 import IconButton from '@/common/components/buttons/iconButton';
-import { Menu, GeometryBG } from '@/common/components/icons';
+import { Menu } from '@/common/components/icons';
 
 export interface BodyUIProps {
     children: React.ReactNode;
@@ -37,38 +37,11 @@ export const HeaderUI = forwardRef<{}, 'div'>((_, ref) => {
     );
 });
 
-const FooterBackground = () => {
-    const styles = useProvidedMultipartStyles();
-
-    const originX = 1480;
-    
-    return (
-        <chakra.div __css={styles.footerBG}>
-            {Array.from(Array(10)).map((_, idx) => (
-               <chakra.div key={idx} __css={styles.bgContainer} transform={`translateX(${originX - 296 * idx}px)`}>
-                    <chakra.div transform={`rotate(90deg)`}>
-                        <GeometryBG />
-                    </chakra.div>
-                    <chakra.div transform={`translateX(-230px) rotate(270deg)`}>
-                        <GeometryBG />
-                    </chakra.div>
-                </chakra.div> 
-            ))}
-        </chakra.div>
-    );
-};
-
-const ChakraLink = chakra(Link);
 export const FooterUI = forwardRef<{}, 'div'>((_, ref) => {
     const styles = useProvidedMultipartStyles();
 
     return (
-        <chakra.div ref={ref} __css={styles.footer}>
-            <ChakraLink href="/" sx={styles.footerLink}>
-                <Image w={56} src="/hd-design-logo.png" alt="logo" />
-            </ChakraLink>
-            <FooterBackground />
-        </chakra.div>
+        <chakra.div ref={ref} __css={styles.footer} />
     );
 });
 
