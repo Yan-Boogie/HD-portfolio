@@ -8,10 +8,6 @@ export interface ShowreelWallpaperButtonUIProps {
     children: React.ReactNode;
 };
 
-/**
- * @todo
- * - Refactor the Image style with css 'aspectRatio'
- */
 const ShowreelWallpaperButtonUI = forwardRef<ShowreelWallpaperButtonUIProps, 'button'>((props, ref) => {
     const { src, alt, children } = props;
 
@@ -23,8 +19,7 @@ const ShowreelWallpaperButtonUI = forwardRef<ShowreelWallpaperButtonUIProps, 'bu
             as="button"
             __css={styles}
         >
-            {/* This styling way is really bad!! */}
-            <Image maxHeight="calc(100vh - 312px)" src={src} alt={alt} />
+            <Image h="100vh" objectFit="cover" sx={{ aspectRatio: `${16 / 9}` }} src={src} alt={alt} />
             {children}
         </Box>
     );

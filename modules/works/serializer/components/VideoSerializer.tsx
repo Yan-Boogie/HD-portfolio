@@ -28,7 +28,7 @@ const VideoSerializer = (props: VideoSerializerProps) => {
     }
 
     return (
-        <VideoPlayer url={value.videoSource} previewAlt="" />
+        <VideoPlayer url={value.videoSource} previewSrc="" previewAlt="" />
     );
 };
 

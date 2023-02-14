@@ -1,97 +1,17 @@
+import { useRouter } from 'next/router'
 import { Divider, DividerProps } from '@chakra-ui/react';
 
 import Page from '@/common/components/page';
 import Text, { TextProps } from '@/common/components/text';
+import type { IMotion } from '@/modules/sanityServer/interfaces';
 import ThumbnailList from './thumbnailList';
 import ThumbnailCarousel from './thumbnailCarousel';
-
 import type { SlideItem } from './thumbnailCarousel/types';
 import type { ListItem } from './thumbnailList/types';
 
 export interface MotionModuleProps {
-
+    motions: IMotion[];
 }
-
-const mockSlides: SlideItem[] = [{
-    idx: '0',
-    url: 'https://vimeo.com/714795278',
-    previewAlt: 'mock',
-    previewSrc: '/mock/mock-1.jpg',
-    onClick: () => console.log('clicked'),
-    label: 'Work Name',
-}, {
-    idx: '1',
-    url: 'https://vimeo.com/714795278',
-    previewAlt: 'mock',
-    previewSrc: '/mock/mock-1.jpg',
-    onClick: () => console.log('clicked'),
-    label: 'Work Name',
-}, {
-    idx: '2',
-    url: 'https://vimeo.com/714795278',
-    previewAlt: 'mock',
-    previewSrc: '/mock/mock-1.jpg',
-    onClick: () => console.log('clicked'),
-    label: 'Work Name',
-}, {
-    idx: '3',
-    url: 'https://vimeo.com/714795278',
-    previewAlt: 'mock',
-    previewSrc: '/mock/mock-1.jpg',
-    onClick: () => console.log('clicked'),
-    label: 'Work Name',
-}, {
-    idx: '4',
-    url: 'https://vimeo.com/714795278',
-    previewAlt: 'mock',
-    previewSrc: '/mock/mock-1.jpg',
-    onClick: () => console.log('clicked'),
-    label: 'Work Name',
-}];
-
-const mockList: ListItem[] = [{
-    idx: '1',
-    url: 'https://vimeo.com/714795278',
-    previewAlt: 'mock',
-    previewSrc: '/mock/mock-1.jpg',
-    text: 'Work',
-    onClick: () => console.log('clicked'),
-}, {
-    idx: '2',
-    url: 'https://vimeo.com/714795278',
-    previewAlt: 'mock',
-    previewSrc: '/mock/mock-1.jpg',
-    text: 'Work',
-    onClick: () => console.log('clicked'),
-}, {
-    idx: '3',
-    url: 'https://vimeo.com/714795278',
-    previewAlt: 'mock',
-    previewSrc: '/mock/mock-1.jpg',
-    text: 'Work',
-    onClick: () => console.log('clicked'),
-}, {
-    idx: '4',
-    url: 'https://vimeo.com/714795278',
-    previewAlt: 'mock',
-    previewSrc: '/mock/mock-1.jpg',
-    text: 'Work',
-    onClick: () => console.log('clicked'),
-}, {
-    idx: '5',
-    url: 'https://vimeo.com/714795278',
-    previewAlt: 'mock',
-    previewSrc: '/mock/mock-1.jpg',
-    text: 'Work',
-    onClick: () => console.log('clicked'),
-}, {
-    idx: '6',
-    url: 'https://vimeo.com/714795278',
-    previewAlt: 'mock',
-    previewSrc: '/mock/mock-1.jpg',
-    text: 'Work',
-    onClick: () => console.log('clicked'),
-}];
 
 const StyledText = (props: TextProps) => (
     <Text textAlign="center" variant="h1" fontSize={['3xl', '4xl', '8xl']} margin="var(--chakra-space-12) 0 0 0" as="h1">{props.children}</Text>
@@ -111,12 +31,40 @@ const StyledDivider = (props: DividerProps) => (
 );
 
 export default function MotionModule(props: MotionModuleProps) {
+    const { motions } = props;
+    const router = useRouter();
+
+    const [slideItems, listItems]: [SlideItem[], ListItem[]] =
+        motions.reduce((bundle, el) => {
+            if (el.section === 'carousel') {
+                bundle[0].push({
+                    idx: el.id,
+                    previewSrc: el.video.previewSrc,
+                    previewAlt: '',
+                    url: el.video.movieUrl,
+                    label: el.title,
+                    onClick: () => router.push(`/works/${el.id}`),
+                });
+            } else {
+                bundle[1].push({
+                    idx: el.id,
+                    previewSrc: el.video.previewSrc,
+                    previewAlt: '',
+                    url: el.video.movieUrl,
+                    text: el.title,
+                    onClick: () => router.push(`/works/${el.id}`),
+                });
+            };
+
+            return bundle;
+        }, [[], []] as [SlideItem[], ListItem[]]);
+
     return (
-        <Page title="Motion">
-            <ThumbnailCarousel slideItems={mockSlides} />
+        <Page layoutStyle="scroll" title="Motion">
+            <ThumbnailCarousel slideItems={slideItems} />
             <StyledText>More Motions</StyledText>
             <StyledDivider />
-            <ThumbnailList listItems={mockList} />
+            <ThumbnailList listItems={listItems} />
         </Page>
     );
 }

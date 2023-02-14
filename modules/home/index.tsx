@@ -6,7 +6,7 @@ import ShowreelWallpaperButton from '@/common/components/buttons/showreelWallpap
 
 export default function HomeModule() {
   return (
-    <Page>
+    <Page layoutStyle="fullScreen">
         <Center>
             <Link href="/showreel">
                 <ShowreelWallpaperButton src="/butt-animation.gif" alt="Main Page Wallpaper" />

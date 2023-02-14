@@ -1,4 +1,4 @@
-import { chakra, Center } from '@chakra-ui/react';
+import { Center } from '@chakra-ui/react';
 
 import Page from '@/common/components/page';
 import VideoPlayer from '@/common/components/videoPlayer';
@@ -26,7 +26,7 @@ export default function ShowreelModule(props: ShowreelModuleProps) {
     const { showreel } = props;
 
     return (
-        <Page>
+        <Page layoutStyle="scroll">
             <StyledWrapper>
                 <VideoPlayer previewSrc={showreel.previewSrc} previewAlt="Showreel" url={showreel.movieUrl} />
             </StyledWrapper>

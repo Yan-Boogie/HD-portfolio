@@ -4,7 +4,7 @@ import { forwardRef } from '@chakra-ui/react';
 
 import { LayoutUI, LayoutUIProps, HeaderUI, FooterUI, BodyUI, TitleUI, ScrollDownUI } from './LayoutUI';
 import type { MergeWithMotion, ReactFCWithRef } from '@/common/utils/typings';
-import type { PageMotionVariants, HeaderMotionVariants, ScrollDownMotionVariants } from '../../types';
+import type { PageMotionVariants, HeaderMotionVariants, ScrollDownMotionVariants, LayoutStyles } from '../../types';
 
 const layoutVariants: PageMotionVariants = {
     enter: { opacity: 1, transition: { when: 'beforeChildren', staggerChildren: 0.3 } },
@@ -24,6 +24,7 @@ const scrollDownMotionVariants: ScrollDownMotionVariants = {
 type MergedLayoutMotionProps = MergeWithMotion<LayoutUIProps>;
 export interface LayoutMotionProps extends MergedLayoutMotionProps {
     title?: string;
+    layoutStyle: LayoutStyles;
 };
 
 const MotionTitle = motion(TitleUI);
@@ -33,7 +34,7 @@ const MotionBody = motion(BodyUI);
 const MotionScrollDown = motion(ScrollDownUI);
 const MotionLayout: ReactFCWithRef<MergedLayoutMotionProps> = motion(LayoutUI);
 const LayoutMotion = forwardRef<LayoutMotionProps, 'div'>((props, ref) => {
-    const { children, title, ...rest } = props;
+    const { children, title, layoutStyle, ...rest } = props;
     const [headerVariant, setHeaderVariant] = useState<string>('');
     const [scrollDownVariant, setScrollDownVariant] = useState<string>('active');
     const { scrollY } = useScroll();
@@ -73,7 +74,7 @@ const LayoutMotion = forwardRef<LayoutMotionProps, 'div'>((props, ref) => {
             ref={ref}
             {...rest}>
             <MotionHeader
-                animate={headerVariant}
+                animate={ layoutStyle === 'fullScreen' ? 'transparent' : headerVariant}
                 variants={headerMotionVariants} />
             {title && (
                 <>
@@ -89,11 +90,13 @@ const LayoutMotion = forwardRef<LayoutMotionProps, 'div'>((props, ref) => {
                         ref={scrollDownRef} />
                 </>
             )}
-            <MotionBody>
+            <MotionBody sx={layoutStyle === 'fullScreen' && { marginTop: 0 }}>
                 {children}
             </MotionBody>
-            <MotionFooter
-                ref={footerRef} />
+            {layoutStyle === 'scroll' && (
+                <MotionFooter
+                    ref={footerRef} />
+            )}
         </MotionLayout>
     );
 });

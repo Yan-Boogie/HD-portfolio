@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 import { useState, useRef, useImperativeHandle } from 'react';
-import { forwardRef } from '@chakra-ui/react';
+import { forwardRef, Image } from '@chakra-ui/react';
 import type ReactPlayer from 'react-player/vimeo';
 import type { VideoPlayerUIProps } from './VideoPlayerUI';
 
@@ -10,13 +10,11 @@ import VideoContainer from './components/videoContainer/';
 import PreviewImage, { PreviewImageProps } from './components/previewImage';
 import useThumbnail from './hooks/useThumbnail';
 
-type ThumbnailSwitch = {
-    thumbnail: true;
+interface VideoPlayerProps extends Omit<VideoPlayerUIProps, 'playerRef'> {
+    thumbnail?: boolean;
     previewSrc: PreviewImageProps['src'];
     previewAlt: PreviewImageProps['alt'];
-} | {};
-
-export type VideoPlayerProps = Omit<VideoPlayerUIProps, 'playerRef'> & ThumbnailSwitch;
+}
 
 const VideoPlayer = forwardRef<VideoPlayerProps, 'video'>((props, ref) => {
     const { thumbnail = false, children, previewSrc, previewAlt, ...rest } = props;
@@ -60,4 +58,30 @@ const VideoPlayer = forwardRef<VideoPlayerProps, 'video'>((props, ref) => {
     );
 })
 
-export default VideoPlayer;
+export interface WrapperProps extends Omit<VideoPlayerProps, 'url'> {
+    url?: string;
+    thumbnail?: boolean;
+    previewSrc: string;
+    previewAlt: string;
+}
+
+const Wrapper = forwardRef<WrapperProps, 'video' | 'img'>((props, ref) => {
+    const { url, ...rest } = props;
+
+    if (!url) {
+        return (
+            <Image
+                src={props.previewSrc}
+                alt={props.previewAlt}
+                w="full"
+                h="full"
+                objectFit="cover" />
+        );
+    }
+
+    return (
+        <VideoPlayer url={url} {...rest} />
+    )
+});
+
+export default Wrapper;

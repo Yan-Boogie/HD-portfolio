@@ -5,6 +5,7 @@ export type VideoContainerUIProps = React.PropsWithChildren;
 const VideoContainerUI = forwardRef<VideoContainerUIProps, 'div'>(({ children }, ref) => {
     return (
         <chakra.div
+            backgroundColor="black"
             pos="relative"
             overflow="hidden"
             w="full"

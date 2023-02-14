@@ -1,60 +1,36 @@
+import { useRouter } from 'next/router';
 import Page from '@/common/components/page';
 import IllustratorCard from '@/common/components/illustratorCard';
 import type { IllustrationItem } from './types';
-
-const mockItems: IllustrationItem[] = [{
-    idx: '0',
-    src: '/mock/mock-1.jpg',
-    alt: 'mock',
-    title: 'Title Title Title',
-    description: 'Description Description Description',
-}, {
-    idx: '1',
-    src: '/mock/mock-1.jpg',
-    alt: 'mock',
-    title: 'Title Title Title',
-    description: 'Description Description Description',
-}, {
-    idx: '2',
-    src: '/mock/mock-1.jpg',
-    alt: 'mock',
-    title: 'Title Title Title',
-    description: 'Description Description Description',
-}, {
-    idx: '3',
-    src: '/mock/mock-1.jpg',
-    alt: 'mock',
-    title: 'Title Title Title',
-    description: 'Description Description Description',
-}, {
-    idx: '4',
-    src: '/mock/mock-1.jpg',
-    alt: 'mock',
-    title: 'Title Title Title',
-    description: 'Description Description Description',
-}, {
-    idx: '5',
-    src: '/mock/mock-1.jpg',
-    alt: 'mock',
-    title: 'Title Title Title',
-    description: 'Description Description Description',
-}];
+import type { IIllustration } from '@/modules/sanityServer/interfaces';
 
 export interface IllustrationModuleProps {
-
+    illustrations: IIllustration[];
 }
 
 export default function IllustrationModule(props: IllustrationModuleProps) {
+    const { illustrations } = props;
+    const router = useRouter();
+
+    const illustrationList: IllustrationItem[] = illustrations.map((illustration) => ({
+        idx: illustration.id,
+        src: illustration.cover,
+        alt: '',
+        title: illustration.title,
+        description: illustration.description || '',
+        onClick: () => router.push(`/works/${illustration.id}`),
+    }));
+
     return (
-        <Page title="Illustration">
-            {mockItems.map((el) => (
+        <Page layoutStyle="scroll" title="Illustration">
+            {illustrationList.map((el) => (
                 <IllustratorCard
                     key={el.idx}
                     src={el.src}
                     alt={el.alt}
                     title={el.title}
                     description={el.description}
-                    onClick={() => console.log('clicked')} />
+                    onClick={el.onClick} />
             ))}
         </Page>
     )

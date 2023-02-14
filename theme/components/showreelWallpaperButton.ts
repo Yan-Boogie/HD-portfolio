@@ -27,17 +27,19 @@ const ShowreelWallpaperButton = helpers.defineMultiStyleConfig({
             backgroundColor: 'gray.700',
         },
         iconBlock: {
-            position: 'absolute',
             zIndex: 'docked',
-            bottom: { sm: '20%', md: 12 },
-            right: { sm: '20%', md: 12 },
+            width: '60px',
+            transform: 'translate(10px, 40px)',
         },
         text: {
-            position: 'absolute',
-            top: '20%',
-            left: '10%',
             zIndex: 'docked',
             display: { sm: 'none', md: 'inherit' },
+            fontSize: '9xl',
+            width: 'xl',
+            wordBreak: 'break-word',
+            textAlign: 'left',
+            lineHeight: 1,
+            letterSpacing: 4,
         }
     },
 });

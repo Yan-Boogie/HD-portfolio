@@ -42,12 +42,12 @@ export const getStaticProps: GetStaticProps = async (context) => {
         }
     `).then((data) => ({
         ...data[0],
-        video: data[0].video && {
+        video: (data[0].video && {
             ...data[0].video,
-            previewSrc: data[0].video.preview.asset._ref,
-            movieUrl: data[0].video.videoSource,
-        },
-        cover: data[0].cover?.asset._ref || null,
+            previewSrc: data[0].video?.preview?.asset?._ref || '',
+            movieUrl: data[0].video?.videoSource || '',
+        }) || null,
+        cover: data[0].cover?.asset._ref || '',
     }));
 
     return { props: { work } };

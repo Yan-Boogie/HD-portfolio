@@ -40,7 +40,7 @@ export default function MenuModule() {
     const router = useRouter();
 
     return (
-        <Page withLayout={false}>
+        <Page layoutStyle="none">
             <StyledCenter>
                 <StyledIconButton aria-label="close" onClick={() => router.back()}>
                     <Close fontSize={['6xl', '6xl']} motiontype="full" />

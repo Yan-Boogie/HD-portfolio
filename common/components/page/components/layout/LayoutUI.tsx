@@ -14,7 +14,7 @@ export const BodyUI = forwardRef<BodyUIProps, 'div'>((props, ref) => {
     const styles = useProvidedMultipartStyles({ name: 'body' });
 
     return (
-        <chakra.div __css={styles} ref={ref}>
+        <chakra.div __css={styles} ref={ref} {...props}>
             {props.children}
         </chakra.div>
     );

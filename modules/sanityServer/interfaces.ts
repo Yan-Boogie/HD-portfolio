@@ -19,3 +19,9 @@ export interface IWork {
     cover?: string;
     overview: BlockContentProps['blocks'];
 };
+
+export interface IMotion extends Pick<IWork, 'id' | 'title'>, Required<Pick<IWork, 'video'>> {
+    section: 'carousel' | 'list';
+};
+
+export interface IIllustration extends Pick<IWork, 'id' | 'title' | 'description'>, Required<Pick<IWork, 'cover'>> {}

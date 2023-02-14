@@ -15,7 +15,7 @@ export default {
 
 const PageWithContent = ({ idx, num }: { idx: number; num: number }) => {
     return idx === num ? (
-        <Page>
+        <Page layoutStyle="scroll">
             <chakra.div w="full" h="1680px">
                 <Text as="h1">Page {idx + 1}</Text>
                 <Text>Page Content</Text>

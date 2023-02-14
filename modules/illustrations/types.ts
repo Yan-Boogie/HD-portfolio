@@ -4,4 +4,5 @@ export type IllustrationItem = {
     alt: string;
     title: string;
     description: string;
+    onClick: () => void;
 };

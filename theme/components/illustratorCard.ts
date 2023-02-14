@@ -72,6 +72,7 @@ const IllustratorCardStyle = helpers.defineMultiStyleConfig({
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
+            padding: '0 var(--chakra-space-8)',
         },
     },
 });

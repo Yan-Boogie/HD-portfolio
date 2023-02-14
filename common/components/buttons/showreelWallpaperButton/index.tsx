@@ -2,7 +2,7 @@ import { useMultiStyleConfig, chakra } from '@chakra-ui/react';
 
 import { StylesProvider } from '@/common/hooks/useProvidedMultipartStyles';
 import ShowreelWallpaperButtonMotion, { ShowreelWallpaperButtonMotionProps } from './ShowreelWallpaperButtonMotion';
-import { CarouselRight } from '../../icons';
+import { Start } from '../../icons';
 import Text from '../../text';
 
 export interface ShowreelWallpaperButtonProps extends Pick<ShowreelWallpaperButtonMotionProps, 'src' | 'alt'> {};
@@ -18,9 +18,11 @@ function ShowreelWallpaperButton(props: ShowreelWallpaperButtonProps) {
     return (
         <StylesProvider.Provider value={styles}>
             <ShowreelWallpaperButtonMotion src={src} alt={alt}>
-                <Text sx={styles.text} color="iconColors.primary" variant="h1">Watch Showreel</Text>
-                <chakra.div sx={styles.iconBlock}>
-                    <CarouselRight motiontype="full" />
+                <chakra.div pos="absolute" top="28%" left="10%" display="flex" flexDirection="column">
+                    <Text sx={styles.text} color="iconColors.primary" variant="h1" as="h1">Watch Showreel</Text>
+                    <chakra.div sx={styles.iconBlock}>
+                        <Start motiontype="full" />
+                    </chakra.div>
                 </chakra.div>
             </ShowreelWallpaperButtonMotion>
         </StylesProvider.Provider>

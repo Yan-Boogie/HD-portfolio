@@ -5,18 +5,19 @@ import { StylesProvider } from '@/common/hooks/useProvidedMultipartStyles';
 import PageMotion, { PageMotionProps } from './PageMotion';
 import Transition from './components/transition';
 import Layout from './components/layout';
+import { LayoutStyles } from './types';
 
 export interface PageProps extends PageMotionProps {
-    withLayout?: boolean;
     title?: string;
+    layoutStyle: LayoutStyles;
 };
 
 const Page = forwardRef<PageProps, 'div'>((props, ref) => {
-    const { children, title, withLayout = true, ...rest } = props;
+    const { children, layoutStyle, title, ...rest } = props;
     const styles = useMultiStyleConfig('Page');
 
-    const renderChildren = () => withLayout ? (
-        <Layout title={title}>
+    const renderChildren = () => layoutStyle !== 'none' ? (
+        <Layout layoutStyle={layoutStyle} title={title}>
             {children}
         </Layout>
     ) : children;

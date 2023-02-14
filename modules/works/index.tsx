@@ -82,12 +82,12 @@ export default function WorksModule(props: WorksModuleProps) {
         }
 
         return (
-            <VideoPlayer url={movieUrl} previewAlt="" />
+            <VideoPlayer url={movieUrl} previewSrc={previewSrc ? urlFor(previewSrc).url() : ''} previewAlt="" />
         )
     };
 
     return (
-        <Page>
+        <Page layoutStyle="scroll">
             <StyledWrapper>
                 {work.workType === 'illustration' ? renderCover() : renderVideo()}
                 <ContentBlock>

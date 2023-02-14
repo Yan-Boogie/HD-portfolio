@@ -43,7 +43,7 @@ const IllustratorCard = forwardRef<IllustratorCardProps, 'div'>((props, ref) => 
                 <CardBody sx={styles.cardBody}>
                     <Text as="h3" variant="h3" sx={styles.cardTitle}>{title}</Text>
                     <Text sx={styles.cardDescription}>{description}</Text>
-                    <CardButton>
+                    <CardButton onClick={onClick}>
                         <AiOutlineSwapRight style={{ marginRight: '4px' }} stroke="var(--chakra-colors-fontColors-primary)" />
                         View Work
                     </CardButton>

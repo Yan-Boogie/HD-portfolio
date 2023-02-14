@@ -14,3 +14,6 @@ export type ScrollDownMotionVariantTypes = 'active' | 'hidden';
 export type ScrollDownMotionVariants = {
     [_key in ScrollDownMotionVariantTypes]: Variant;
 };
+
+export type LayoutStyles = 'fullScreen' | 'scroll' | 'none';
+
