@@ -25,3 +25,24 @@ export interface IMotion extends Pick<IWork, 'id' | 'title'>, Required<Pick<IWor
 };
 
 export interface IIllustration extends Pick<IWork, 'id' | 'title' | 'description'>, Required<Pick<IWork, 'cover'>> {}
+
+export interface About {
+    title: string;
+    description: string;
+    avatar: string;
+    gmail: Gmail;
+    instagram: Instagram;
+    linkedIn: LinkedIn;
+    facebook: Facebook;
+    vimeo: Vimeo;
+    behance: Behance;
+};
+
+export type SocialMedia = string;
+
+export type Gmail = SocialMedia;
+export type Instagram = SocialMedia;
+export type LinkedIn = SocialMedia;
+export type Facebook = SocialMedia;
+export type Vimeo = SocialMedia;
+export type Behance = SocialMedia;
