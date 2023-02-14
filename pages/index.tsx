@@ -1,7 +1,14 @@
+import Head from 'next/head';
+
 import HomeModule from '@/modules/home/';
 
 export default function Home() {
   return (
-    <HomeModule />
+    <div>
+      <Head>
+        <title>Hua-Design - Home</title>
+      </Head>
+      <HomeModule />
+    </div>
   );
 }

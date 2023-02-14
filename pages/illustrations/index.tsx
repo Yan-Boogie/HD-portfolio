@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import type { GetStaticProps } from 'next';
 
 import IllustrationModule from '@/modules/illustrations';
@@ -11,7 +12,12 @@ interface IllustrationProps {
 
 export default function Illustrations({ illustrations }: IllustrationProps) {
     return (
-        <IllustrationModule illustrations={illustrations} />
+        <div>
+            <Head>
+                <title>Hua-Design - Illustration</title>
+            </Head>
+            <IllustrationModule illustrations={illustrations} />
+        </div>
     );
 }
 

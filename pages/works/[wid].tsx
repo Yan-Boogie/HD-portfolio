@@ -1,3 +1,5 @@
+import Head from 'next/head';
+
 import type { GetStaticPaths, GetStaticProps } from 'next'; 
 import WorksModule from '@/modules/works';
 import { sanityClient } from '@/modules/sanityServer/createClient';
@@ -11,7 +13,12 @@ export default function Works(props: WorksProps) {
     const { work } = props;
 
     return (
-        <WorksModule work={work} />
+        <div>
+            <Head>
+                <title>Hua-Design - Works</title>
+            </Head>
+            <WorksModule work={work} />
+        </div>
     )
 }
 

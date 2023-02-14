@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import type { GetStaticProps } from 'next'; 
 
 import { urlFor } from '@/modules/sanityServer/imageUrlBuilder';
@@ -11,7 +12,12 @@ interface MotionsProps {
 
 export default function Motions({ motions }: MotionsProps) {
     return (
-        <MotionsModule motions={motions} />
+        <div>
+            <Head>
+                <title>Hua-Design - Motions</title>
+            </Head>
+            <MotionsModule motions={motions} />
+        </div>
     );
 }
 

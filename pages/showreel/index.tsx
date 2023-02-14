@@ -1,3 +1,5 @@
+import Head from 'next/head';
+
 import ShowreelModule from '@/modules/showreel';
 import { sanityClient } from '@/modules/sanityServer/createClient';
 import { IShowreel } from '@/modules/sanityServer/interfaces';
@@ -9,7 +11,12 @@ interface ShowreelProps {
 
 export default function Showreel({ showreel }: ShowreelProps) {
     return (
-        <ShowreelModule showreel={showreel} />
+        <div>
+            <Head>
+                <title>Hua-Design - Showreel</title>
+            </Head>
+            <ShowreelModule showreel={showreel} />
+        </div>
     );
 }
 
