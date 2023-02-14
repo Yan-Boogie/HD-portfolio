@@ -16,6 +16,7 @@ export default function Works(props: WorksProps) {
         <div>
             <Head>
                 <title>Hua-Design - Works</title>
+                <meta name="description" content="Hua-Design work details" />
             </Head>
             <WorksModule work={work} />
         </div>

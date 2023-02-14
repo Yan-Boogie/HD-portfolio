@@ -14,6 +14,7 @@ export default function Showreel({ showreel }: ShowreelProps) {
         <div>
             <Head>
                 <title>Hua-Design - Showreel</title>
+                <meta name="description" content="Hua-Design Showreel" />
             </Head>
             <ShowreelModule showreel={showreel} />
         </div>

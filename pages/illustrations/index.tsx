@@ -15,6 +15,7 @@ export default function Illustrations({ illustrations }: IllustrationProps) {
         <div>
             <Head>
                 <title>Hua-Design - Illustration</title>
+                <meta name="description" content="Hua-Design Illustration browsing" />
             </Head>
             <IllustrationModule illustrations={illustrations} />
         </div>

@@ -7,6 +7,7 @@ export default function Home() {
     <div>
       <Head>
         <title>Hua-Design - Home</title>
+        <meta name="description" content="Hua-Design Home Page" />
       </Head>
       <HomeModule />
     </div>

@@ -7,6 +7,7 @@ export default function Menu() {
         <div>
             <Head>
                 <title>Hua-Design - Menu</title>
+                <meta name="description" content="Hua-Design Menu Page" />
             </Head>
             <MenuModule />
         </div>

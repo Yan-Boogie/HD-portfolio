@@ -15,6 +15,7 @@ export default function Motions({ motions }: MotionsProps) {
         <div>
             <Head>
                 <title>Hua-Design - Motions</title>
+                <meta name="description" content="Hua-Design Motions browsing" />
             </Head>
             <MotionsModule motions={motions} />
         </div>
