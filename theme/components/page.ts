@@ -98,7 +98,7 @@ const PageStyle = helpers.defineMultiStyleConfig({
         title: {
             position: 'absolute',
             right: {
-                lg: '20%',
+                lg: '65%',
                 base: '50%',
             },
             transform: {
@@ -106,7 +106,7 @@ const PageStyle = helpers.defineMultiStyleConfig({
                 base: 'translate(50%, -50%)',
             },
             top: {
-                lg: '18%',
+                lg: '35%',
                 base: '50%',
             },
             fontWeight: 'black',

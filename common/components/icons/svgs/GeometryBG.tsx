@@ -1,6 +1,6 @@
 import { forwardRef } from '@chakra-ui/react';
 
-import IconSwitch from '../IconSwitch';
+import IconSwitch, { IconSwitchProps } from '../IconSwitch';
 
 const Path = () => (
     <>
@@ -19,13 +19,12 @@ const Path = () => (
     </>
 );
 
-export const GeometryBG = forwardRef<{}, 'div'>((props, ref) => {
+export const GeometryBG = forwardRef<IconSwitchProps, 'div'>((props, ref) => {
     return (
         <IconSwitch
             ref={ref}
-            motiontype="none"
-            fontSize="300px"
-            viewBox="0 0 1728.95 1537.69">
+            viewBox="0 0 1728.95 1537.69"
+            {...props}>
             <Path />
         </IconSwitch>
     );

@@ -5,7 +5,7 @@ import { HiOutlineArrowNarrowDown } from 'react-icons/hi';
 import useProvidedMultipartStyles from '@/common/hooks/useProvidedMultipartStyles';
 import Text from '@/common/components/text';
 import IconButton from '@/common/components/buttons/iconButton';
-import { Menu } from '@/common/components/icons';
+import { Menu, GeometryBG } from '@/common/components/icons';
 
 export interface BodyUIProps {
     children: React.ReactNode;
@@ -70,6 +70,16 @@ export const TitleUI = forwardRef<TitleUIProps, 'div'>((props, ref) => {
             <Text as="h1" variant="h1" sx={styles} ref={ref}>
                 {title}
             </Text>
+            <GeometryBG
+                motiontype="none"
+                sx={{
+                    fontSize: '1280px',
+                    position: 'absolute',
+                    bottom: '-10%',
+                    right: 0,
+                    opacity: 0.6,
+                    display: { lg: 'inherit', base: 'none' } 
+                }} />
         </chakra.div>
     );
 });
