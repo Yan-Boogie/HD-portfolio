@@ -14,7 +14,7 @@ export interface MotionModuleProps {
 }
 
 const StyledText = (props: TextProps) => (
-    <Text textAlign="center" variant="h1" fontSize={['3xl', '4xl', '8xl']} margin="var(--chakra-space-12) 0 0 0" as="h1">{props.children}</Text>
+    <Text textAlign="center" variant="h1" fontSize={['3xl', '4xl', '8xl']} margin={["var(--chakra-space-36) 0 0 0", "var(--chakra-space-24) 0 0 0", "var(--chakra-space-12) 0 0 0"]} as="h1">{props.children}</Text>
 );
 
 const StyledDivider = (props: DividerProps) => (
