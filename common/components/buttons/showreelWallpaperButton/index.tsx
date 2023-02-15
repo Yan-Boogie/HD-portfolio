@@ -7,10 +7,6 @@ import Text from '../../text';
 
 export interface ShowreelWallpaperButtonProps extends Pick<ShowreelWallpaperButtonMotionProps, 'src' | 'alt'> {};
 
-/**
- * @todo
- * - add forwardRef
- */
 function ShowreelWallpaperButton(props: ShowreelWallpaperButtonProps) {
     const { src, alt } = props;
     const styles = useMultiStyleConfig('ShowreelWallpaperButton');
