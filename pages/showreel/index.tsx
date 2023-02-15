@@ -25,13 +25,12 @@ export async function getStaticProps() {
     const showreel: IShowreel = await sanityClient.fetch(`
         *[_type == "showreel"] {
             _id,
-            videoSource,
-            "imgSource": preview.asset._ref
+            "video": Video
         }
     `).then((data) => ({
         id: data[0]._id,
-        previewSrc: urlFor(data[0].imgSource).url(),
-        movieUrl: data[0].videoSource,
+        previewSrc: data[0].video.preview?.asset?._ref ? urlFor(data[0].video.preview?.asset?._ref).url() : '',
+        movieUrl: data[0].video.videoSource,
     }));
 
     return {
