@@ -16,7 +16,7 @@ const StyledWrapper = ({ children }: React.PropsWithChildren) => (
         }}
         marginTop={{
             md: 0,
-            base: 8,
+            base: 28,
         }}>
         {children}
     </Center>
