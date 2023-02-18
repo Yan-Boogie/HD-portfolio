@@ -6,10 +6,11 @@ export interface ShowreelWallpaperButtonUIProps {
     src: ImageProps['src'];
     alt: ImageProps['alt'];
     children: React.ReactNode;
+    onClick: () => void;
 };
 
 const ShowreelWallpaperButtonUI = forwardRef<ShowreelWallpaperButtonUIProps, 'button'>((props, ref) => {
-    const { src, alt, children } = props;
+    const { src, alt, children, onClick } = props;
 
     const styles = useProvidedMultipartStyles({ name: 'showReelWallpaperButton' });
 
@@ -18,6 +19,7 @@ const ShowreelWallpaperButtonUI = forwardRef<ShowreelWallpaperButtonUIProps, 'bu
             ref={ref}
             as="button"
             __css={styles}
+            onClick={onClick}
         >
             <Image h="100vh" objectFit="cover" sx={{ aspectRatio: `${16 / 9}` }} src={src} alt={alt} />
             {children}

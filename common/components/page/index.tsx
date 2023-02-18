@@ -1,7 +1,9 @@
+import { useEffect } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { forwardRef, useMultiStyleConfig } from '@chakra-ui/react';
 
 import { StylesProvider } from '@/common/hooks/useProvidedMultipartStyles';
+import { useGlobalLoadingEmitter } from '@/modules/globalLoading';
 import PageMotion, { PageMotionProps } from './PageMotion';
 import Transition from './components/transition';
 import Layout from './components/layout';
@@ -15,6 +17,12 @@ export interface PageProps extends PageMotionProps {
 const Page = forwardRef<PageProps, 'div'>((props, ref) => {
     const { children, layoutStyle, title, ...rest } = props;
     const styles = useMultiStyleConfig('Page');
+    const emitLoading = useGlobalLoadingEmitter();
+    
+    useEffect(() => {
+        emitLoading('inexist');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     const renderChildren = () => layoutStyle !== 'none' ? (
         <Layout layoutStyle={layoutStyle} title={title}>

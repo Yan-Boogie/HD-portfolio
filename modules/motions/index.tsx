@@ -3,6 +3,7 @@ import { Divider, DividerProps } from '@chakra-ui/react';
 
 import Page from '@/common/components/page';
 import Text, { TextProps } from '@/common/components/text';
+import { useGlobalLoadingEmitter } from '@/modules/globalLoading';
 import type { IMotion } from '@/modules/sanityServer/interfaces';
 import ThumbnailList from './thumbnailList';
 import ThumbnailCarousel from './thumbnailCarousel';
@@ -33,6 +34,7 @@ const StyledDivider = (props: DividerProps) => (
 export default function MotionModule(props: MotionModuleProps) {
     const { motions } = props;
     const router = useRouter();
+    const emitLoading = useGlobalLoadingEmitter();
 
     const [slideItems, listItems]: [SlideItem[], ListItem[]] =
         motions.reduce((bundle, el) => {
@@ -43,7 +45,10 @@ export default function MotionModule(props: MotionModuleProps) {
                     previewAlt: '',
                     url: el.video.movieUrl,
                     label: el.title,
-                    onClick: () => router.push(`/works/${el.id}`),
+                    onClick: () => {
+                        emitLoading('exist');            
+                        router.push(`/works/${el.id}`);
+                    },
                 });
             } else {
                 bundle[1].push({
@@ -52,7 +57,10 @@ export default function MotionModule(props: MotionModuleProps) {
                     previewAlt: '',
                     url: el.video.movieUrl,
                     text: el.title,
-                    onClick: () => router.push(`/works/${el.id}`),
+                    onClick: () => {
+                        emitLoading('exist');
+                        router.push(`/works/${el.id}`);
+                    },
                 });
             };
 

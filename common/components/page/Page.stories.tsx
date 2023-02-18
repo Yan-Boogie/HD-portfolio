@@ -7,7 +7,6 @@ import Text from '../text';
 import IconButton from '../buttons/iconButton';
 import { CarouselRight } from '../icons';
 
-
 export default {
     title: 'Component/Page',
     component: Page,

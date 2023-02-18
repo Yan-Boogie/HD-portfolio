@@ -1,12 +1,11 @@
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 import { Center, CenterProps } from '@chakra-ui/react';
 
 import IconButton, { IconButtonProps } from '@/common/components/buttons/iconButton';
 import { Close } from '@/common/components/icons';
 import Page from '@/common/components/page';
-
 import MenuItemButton from '@/common/components/buttons/menuItemButton';
+import { useGlobalLoadingEmitter } from '@/modules/globalLoading';
 
 const menuItems = [{
     url: '/showreel',
@@ -38,6 +37,7 @@ const StyledIconButton = (props: IconButtonProps) => (
 
 export default function MenuModule() {
     const router = useRouter();
+    const emitLoading = useGlobalLoadingEmitter();
 
     return (
         <Page layoutStyle="none">
@@ -46,11 +46,9 @@ export default function MenuModule() {
                     <Close fontSize={['6xl', '6xl']} motiontype="full" />
                 </StyledIconButton>
                 {menuItems.map((item, idx) => (
-                    <Link href={item.url} key={idx}>
-                        <MenuItemButton>
-                            {item.label}
-                        </MenuItemButton>
-                    </Link>
+                    <MenuItemButton key={idx} onClick={() => { emitLoading('exist'); router.push(item.url); }}>
+                        {item.label}
+                    </MenuItemButton>
                 ))}
             </StyledCenter>
         </Page>

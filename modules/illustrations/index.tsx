@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import Page from '@/common/components/page';
 import IllustratorCard from '@/common/components/illustratorCard';
+import { useGlobalLoadingEmitter } from '@/modules/globalLoading';
 import type { IllustrationItem } from './types';
 import type { IIllustration } from '@/modules/sanityServer/interfaces';
 
@@ -11,6 +12,7 @@ export interface IllustrationModuleProps {
 export default function IllustrationModule(props: IllustrationModuleProps) {
     const { illustrations } = props;
     const router = useRouter();
+    const emitLoading = useGlobalLoadingEmitter();
 
     const illustrationList: IllustrationItem[] = illustrations.map((illustration) => ({
         idx: illustration.id,
@@ -18,7 +20,10 @@ export default function IllustrationModule(props: IllustrationModuleProps) {
         alt: '',
         title: illustration.title,
         description: illustration.description || '',
-        onClick: () => router.push(`/works/${illustration.id}`),
+        onClick: () => {
+            emitLoading('exist');
+            router.push(`/works/${illustration.id}`);
+        },
     }));
 
     return (
