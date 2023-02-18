@@ -8,5 +8,5 @@ export default {
 } as ComponentMeta<typeof ShowreelWallpaperButton>;
 
 export const ShowreelButton = () => (
-    <ShowreelWallpaperButton src="/butt-animation.gif" alt="Main Page Wallpaper" />
+    <ShowreelWallpaperButton onClick={() => console.log('clicked')} src="/butt-animation.gif" alt="Main Page Wallpaper" />
 );
