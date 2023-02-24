@@ -55,7 +55,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
             previewSrc: data[0].video?.preview?.asset?._ref || '',
             movieUrl: data[0].video?.videoSource || '',
         }) || null,
-        cover: data[0].cover?.asset._ref || '',
+        cover: data[0].cover?.asset?._ref || '',
     }));
 
     return { props: { work } };
