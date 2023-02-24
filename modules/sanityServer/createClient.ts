@@ -8,4 +8,5 @@ export const sanityClient = createClient({
     projectId: 'av5zugn5',
     dataset: 'production',
     useCdn: false,
+    apiVersion: '2023-02-23',
 });
