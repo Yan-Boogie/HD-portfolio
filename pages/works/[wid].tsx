@@ -57,6 +57,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         }) || null,
         cover: data[0].cover?.asset?._ref || '',
     }));
+    
 
     return { props: { work } };
 }
