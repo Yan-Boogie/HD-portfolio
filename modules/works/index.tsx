@@ -15,6 +15,7 @@ export interface WorksModuleProps {
 
 const StyledWrapper = ({ children }: React.PropsWithChildren) => (
     <chakra.div
+        fontFamily="Hanken Grotesk"
         margin="0 auto"
         width="full"
         padding={6}
