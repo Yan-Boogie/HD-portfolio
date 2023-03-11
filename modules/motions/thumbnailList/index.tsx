@@ -62,6 +62,8 @@ const MobileList = (props: ThumbnailListProps) => {
 const ThumbnailList = (props: ThumbnailListProps) => {
     const [isLargerThanSm] = useMediaQuery('(min-width: 480px)');
 
+    console.log('props-->\n', props);
+
     const renderList = () => isLargerThanSm ? <DesktopList {...props} /> : <MobileList {...props} />;
 
     return (

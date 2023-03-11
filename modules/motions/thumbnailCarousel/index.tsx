@@ -24,6 +24,7 @@ const Wrapper = forwardRef<{ children: React.ReactNode[]}, 'div'>(({ children },
         display="flex"
         w="full"
         pos="relative"
+        overflow="hidden"
         backgroundColor="black">
         {children}
     </chakra.div>
@@ -48,7 +49,7 @@ const ThumbnailCarousel = (props: ThumbnailCarouselProps) => {
     const isWrapperInView = useInView(wrapperRef, { once: true });
 
     const renderIndicators = () => (
-        <chakra.div  pos="absolute" top="2" left="50%" transform="translateX(-50%)" display="flex" flexWrap="nowrap">
+        <chakra.div pos="absolute" top="2" left="50%" transform="translateX(-50%)" display="flex" flexWrap="nowrap">
             {slideItems.map((el, idx) => (
                 <Indicator active={idx === activated} key={el.idx} num={idx} onClick={(num) => setActivate(num)} />
             ))}
@@ -56,23 +57,29 @@ const ThumbnailCarousel = (props: ThumbnailCarouselProps) => {
     );
 
     const renderPrev = () => (
-        <IconButton pos="absolute" left="2" top="50%" transform="translateY(-50%)" aria-label="prev button" onClick={() => setActivate(prev => {
-            if (prev === 0) return slideItems.length - 1;
+        <>
+            <chakra.div pos="absolute" left="0" top="0" height="100%" width="24" backgroundColor="black" />
+            <IconButton pos="absolute" left="2" top="50%" transform="translateY(-50%)" aria-label="prev button" onClick={() => setActivate(prev => {
+                if (prev === 0) return slideItems.length - 1;
 
-            return prev - 1;
-        })}>
-            <CarouselLeft fontSize={PREV_NEXT_SIZE} motiontype="full" />
-        </IconButton>
+                return prev - 1;
+            })}>
+                <CarouselLeft fontSize={PREV_NEXT_SIZE} motiontype="full" />
+            </IconButton>
+        </>
     );
 
     const renderNext = () => (
-        <IconButton pos="absolute" right="2" top="50%" transform="translateY(-50%)" aria-label="next button" onClick={() => setActivate(prev => {
-            if (prev === slideItems.length - 1) return 0;
+        <>
+            <chakra.div pos="absolute" right="0" top="0" height="100%" width="24" backgroundColor="black" />
+            <IconButton pos="absolute" right="2" top="50%" transform="translateY(-50%)" aria-label="next button" onClick={() => setActivate(prev => {
+                if (prev === slideItems.length - 1) return 0;
 
-            return prev + 1;
-        })}>
-            <CarouselRight fontSize={PREV_NEXT_SIZE} motiontype="full" />
-        </IconButton>
+                return prev + 1;
+            })}>
+                <CarouselRight fontSize={PREV_NEXT_SIZE} motiontype="full" />
+            </IconButton>
+        </>
     );
 
     const renderPadder = () => (

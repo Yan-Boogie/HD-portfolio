@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { Divider, DividerProps } from '@chakra-ui/react';
+import { Divider, DividerProps, useMediaQuery } from '@chakra-ui/react';
 
 import Page from '@/common/components/page';
 import Text, { TextProps } from '@/common/components/text';
@@ -33,11 +33,28 @@ const StyledDivider = (props: DividerProps) => (
 
 export default function MotionModule(props: MotionModuleProps) {
     const { motions } = props;
+    const [isLargerThanSm] = useMediaQuery('(min-width: 480px)');
     const router = useRouter();
     const emitLoading = useGlobalLoadingEmitter();
 
     const [slideItems, listItems]: [SlideItem[], ListItem[]] =
         motions.reduce((bundle, el) => {
+            if (!isLargerThanSm) {
+                bundle[1].push({
+                    idx: el.id,
+                    previewSrc: el.video.previewSrc,
+                    previewAlt: '',
+                    url: el.video.movieUrl,
+                    text: el.title,
+                    onClick: () => {
+                        emitLoading('exist');
+                        router.push(`/works/${el.id}`);
+                    },
+                });
+
+                return bundle;
+            }
+
             if (el.section === 'carousel') {
                 bundle[0].push({
                     idx: el.id,
@@ -69,9 +86,13 @@ export default function MotionModule(props: MotionModuleProps) {
 
     return (
         <Page layoutStyle="scroll" title="Motion">
-            <ThumbnailCarousel slideItems={slideItems} />
-            <StyledText>More Motions</StyledText>
-            <StyledDivider />
+            {isLargerThanSm && (
+                <>
+                    <ThumbnailCarousel slideItems={slideItems} />
+                    <StyledText>More Motions</StyledText>
+                    <StyledDivider />
+                </>
+            )}
             <ThumbnailList listItems={listItems} />
         </Page>
     );
