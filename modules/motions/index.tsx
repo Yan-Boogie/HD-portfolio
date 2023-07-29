@@ -39,60 +39,78 @@ export default function MotionModule(props: MotionModuleProps) {
 
     const [slideItems, listItems]: [SlideItem[], ListItem[]] =
         motions.reduce((bundle, el) => {
-            if (!isLargerThanSm) {
-                bundle[1].push({
-                    idx: el.id,
-                    previewSrc: el.video.previewSrc,
-                    previewAlt: '',
-                    url: el.video.movieUrl,
-                    text: el.title,
-                    onClick: () => {
-                        emitLoading('exist');
-                        router.push(`/works/${el.id}`);
-                    },
-                });
-
-                return bundle;
-            }
-
-            if (el.section === 'carousel') {
-                bundle[0].push({
-                    idx: el.id,
-                    previewSrc: el.video.previewSrc,
-                    previewAlt: '',
-                    url: el.video.movieUrl,
-                    label: el.title,
-                    onClick: () => {
-                        emitLoading('exist');            
-                        router.push(`/works/${el.id}`);
-                    },
-                });
-            } else {
-                bundle[1].push({
-                    idx: el.id,
-                    previewSrc: el.video.previewSrc,
-                    previewAlt: '',
-                    url: el.video.movieUrl,
-                    text: el.title,
-                    onClick: () => {
-                        emitLoading('exist');
-                        router.push(`/works/${el.id}`);
-                    },
-                });
-            };
+            bundle[1].push({
+                idx: el.id,
+                previewSrc: el.video.previewSrc,
+                previewAlt: '',
+                url: el.video.movieUrl,
+                text: el.title,
+                onClick: () => {
+                    emitLoading('exist');
+                    router.push(`/works/${el.id}`);
+                },
+            });
 
             return bundle;
+
+            /**
+             * Temporary Remove Carousel feature
+             */
+            // if (!isLargerThanSm) {
+            //     bundle[1].push({
+            //         idx: el.id,
+            //         previewSrc: el.video.previewSrc,
+            //         previewAlt: '',
+            //         url: el.video.movieUrl,
+            //         text: el.title,
+            //         onClick: () => {
+            //             emitLoading('exist');
+            //             router.push(`/works/${el.id}`);
+            //         },
+            //     });
+
+            //     return bundle;
+            // }
+
+            // if (el.section === 'carousel') {
+            //     bundle[0].push({
+            //         idx: el.id,
+            //         previewSrc: el.video.previewSrc,
+            //         previewAlt: '',
+            //         url: el.video.movieUrl,
+            //         label: el.title,
+            //         onClick: () => {
+            //             emitLoading('exist');            
+            //             router.push(`/works/${el.id}`);
+            //         },
+            //     });
+            // } else {
+            //     bundle[1].push({
+            //         idx: el.id,
+            //         previewSrc: el.video.previewSrc,
+            //         previewAlt: '',
+            //         url: el.video.movieUrl,
+            //         text: el.title,
+            //         onClick: () => {
+            //             emitLoading('exist');
+            //             router.push(`/works/${el.id}`);
+            //         },
+            //     });
+            // };
+
+            // return bundle;
         }, [[], []] as [SlideItem[], ListItem[]]);
 
     return (
         <Page layoutStyle="scroll" title="Motion">
-            {isLargerThanSm && (
+            {/* Temporary Remove Carousel feature */}
+            {/* {isLargerThanSm && (
                 <>
                     <ThumbnailCarousel slideItems={slideItems} />
                     <StyledText>More Motions</StyledText>
                     <StyledDivider />
                 </>
-            )}
+            )} */}
             <ThumbnailList listItems={listItems} />
         </Page>
     );
